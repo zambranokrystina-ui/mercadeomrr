@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agenda tu Consulta — Mercadeo MRR LLC</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a;
+  --card:#111111;
+  --card-hover:#1a1a1a;
+  --gold:#d4a843;
+  --gold-light:#f0d078;
+  --gold-dark:#a07820;
+  --white:#f5f0e8;
+  --gray:#8a8680;
+  --gray-light:#c5c0b8;
+  --accent:#e8572a;
+  --input-bg:#0e0e0e;
+  --input-border:rgba(212,168,67,0.15);
+  --green:#25d366;
+  --font-display:'Syne',sans-serif;
+  --font-serif:'Playfair Display',serif;
+  --font-body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:auto}
+body{background:var(--bg);color:var(--white);font-family:var(--font-body);-webkit-font-smoothing:antialiased;min-height:100vh}
+
+/* ─── HEADER ─── */
+.f-header{
+  background:rgba(10,10,10,0.95);
+  border-bottom:1px solid rgba(212,168,67,0.1);
+  padding:1rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.f-logo{font-family:var(--font-display);font-weight:800;font-size:1.1rem;color:var(--white)}
+.f-logo span{color:var(--gold)}
+.f-back{
+  color:var(--gray-light);font-size:0.85rem;text-decoration:none;
+  display:flex;align-items:center;gap:6px;transition:color .3s;
+}
+.f-back:hover{color:var(--gold)}
+
+/* ─── LAYOUT ─── */
+.f-wrapper{
+  max-width:680px;margin:0 auto;
+  padding:3rem 2rem 4rem;
+}
+
+/* ─── PROGRESS ─── */
+.f-progress{
+  display:flex;align-items:center;gap:0;margin-bottom:2.5rem;
+}
+.f-progress-step{
+  flex:1;text-align:center;position:relative;
+}
+.f-progress-dot{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--card);border:2px solid rgba(212,168,67,0.15);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-size:0.75rem;font-weight:800;
+  color:var(--gray);margin:0 auto 6px;transition:all .4s;
+}
+.f-progress-step.active .f-progress-dot{
+  background:var(--gold);border-color:var(--gold);color:var(--bg);
+}
+.f-progress-step.done .f-progress-dot{
+  background:var(--gold);border-color:var(--gold);color:var(--bg);
+}
+.f-progress-label{font-size:0.7rem;color:var(--gray);font-weight:500}
+.f-progress-step.active .f-progress-label{color:var(--gold-light)}
+.f-progress-line{
+  flex:0 0 auto;width:60px;height:2px;
+  background:rgba(212,168,67,0.1);margin:0 -8px;margin-bottom:20px;
+}
+.f-progress-line.done{background:var(--gold)}
+
+/* ─── FORM CARD ─── */
+.f-card{
+  background:var(--card);
+  border:1px solid rgba(212,168,67,0.1);
+  border-radius:1.5rem;
+  padding:2.5rem;
+  position:relative;
+}
+
+.f-card-title{
+  font-family:var(--font-display);font-size:1.4rem;font-weight:800;
+  margin-bottom:0.3rem;
+}
+.f-card-title em{
+  font-family:var(--font-serif);font-style:italic;color:var(--gold);font-weight:400;
+}
+.f-card-sub{font-size:0.88rem;color:var(--gray);margin-bottom:2rem;line-height:1.5}
+
+/* ─── STEP PANELS ─── */
+.f-step{display:none}
+.f-step.active{display:block}
+
+/* ─── SERVICE SELECTOR ─── */
+.f-services{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem}
+.f-service{
+  display:flex;align-items:center;gap:0.8rem;
+  padding:1rem 1.2rem;background:var(--input-bg);
+  border:1.5px solid rgba(212,168,67,0.06);border-radius:0.9rem;
+  cursor:pointer;transition:all .3s;
+}
+.f-service:hover{border-color:rgba(212,168,67,0.2);background:var(--card-hover)}
+.f-service.sel{border-color:var(--gold);background:rgba(212,168,67,0.06)}
+
+.f-service-radio{
+  width:18px;height:18px;border-radius:50%;
+  border:2px solid rgba(212,168,67,0.2);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.f-service.sel .f-service-radio{border-color:var(--gold)}
+.f-service.sel .f-service-radio::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--gold)}
+
+.f-service-icon{font-size:1.3rem;flex-shrink:0}
+.f-service-name{font-size:0.85rem;font-weight:600;color:var(--gray-light);line-height:1.3}
+.f-service.sel .f-service-name{color:var(--white)}
+
+/* ─── FORM FIELDS ─── */
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-bottom:0.8rem}
+.f-row.full{grid-template-columns:1fr}
+.f-group{display:flex;flex-direction:column;gap:0.35rem}
+.f-group label{font-size:0.78rem;font-weight:600;color:var(--gray-light);letter-spacing:0.02em}
+.f-group input,.f-group select,.f-group textarea{
+  background:var(--input-bg);border:1px solid var(--input-border);
+  border-radius:0.7rem;padding:0.85rem 1rem;font-size:0.9rem;
+  color:var(--white);font-family:var(--font-body);
+  transition:border-color .3s,box-shadow .3s;outline:none;width:100%;
+  resize:none;
+}
+.f-group input::placeholder,.f-group textarea::placeholder{color:rgba(138,134,128,0.5)}
+.f-group input:focus,.f-group select:focus,.f-group textarea:focus{
+  border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,168,67,0.1);
+}
+.f-group select{
+  appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23d4a843' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;
+}
+
+/* ─── BUDGET OPTIONS ─── */
+.f-budgets{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-bottom:1rem}
+.f-budget{
+  padding:0.8rem 1rem;background:var(--input-bg);
+  border:1.5px solid rgba(212,168,67,0.06);border-radius:0.8rem;
+  text-align:center;cursor:pointer;transition:all .3s;
+  font-size:0.85rem;font-weight:600;color:var(--gray-light);
+}
+.f-budget:hover{border-color:rgba(212,168,67,0.2)}
+.f-budget.sel{border-color:var(--gold);color:var(--white);background:rgba(212,168,67,0.06)}
+
+/* ─── BUTTONS ─── */
+.f-btn-row{display:flex;gap:0.8rem;margin-top:2rem}
+.f-btn-next{
+  flex:1;display:flex;align-items:center;justify-content:center;gap:0.5rem;
+  background:linear-gradient(135deg,var(--gold),var(--gold-dark));
+  color:var(--bg);padding:1rem 2rem;border-radius:3rem;
+  font-family:var(--font-display);font-weight:700;font-size:0.95rem;
+  border:none;cursor:pointer;transition:transform .3s,box-shadow .3s;
+  box-shadow:0 4px 20px rgba(212,168,67,0.2);
+}
+.f-btn-next:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(212,168,67,0.35)}
+.f-btn-back{
+  display:flex;align-items:center;justify-content:center;gap:0.5rem;
+  background:transparent;color:var(--gray-light);
+  padding:1rem 1.5rem;border-radius:3rem;
+  font-family:var(--font-body);font-weight:600;font-size:0.9rem;
+  border:1px solid rgba(212,168,67,0.15);cursor:pointer;transition:all .3s;
+}
+.f-btn-back:hover{border-color:var(--gold);color:var(--gold)}
+
+.f-btn-whatsapp{
+  flex:1;display:flex;align-items:center;justify-content:center;gap:0.6rem;
+  background:var(--green);color:#fff;
+  padding:1.1rem 2rem;border-radius:3rem;
+  font-family:var(--font-display);font-weight:700;font-size:1rem;
+  border:none;cursor:pointer;transition:transform .3s,box-shadow .3s;
+  box-shadow:0 4px 20px rgba(37,211,102,0.25);
+}
+.f-btn-whatsapp:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(37,211,102,0.4)}
+
+/* ─── SUMMARY ─── */
+.f-summary{
+  background:var(--input-bg);border:1px solid rgba(212,168,67,0.08);
+  border-radius:1rem;padding:1.5rem;margin-bottom:1.5rem;
+}
+.f-summary-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.5rem 0;font-size:0.88rem;
+  border-bottom:1px solid rgba(212,168,67,0.05);
+}
+.f-summary-row:last-child{border:none}
+.f-summary-row .lab{color:var(--gray)}
+.f-summary-row .val{color:var(--white);font-weight:600}
+
+/* ─── TRUST ─── */
+.f-trust{
+  display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;
+  margin-top:2rem;
+}
+.f-trust-item{font-size:0.72rem;color:var(--gray);display:flex;align-items:center;gap:4px}
+.f-trust-item span{font-size:0.9rem}
+
+/* ─── FOOTER ─── */
+.f-footer{text-align:center;padding:2rem;max-width:680px;margin:0 auto}
+.f-footer p{font-size:0.72rem;color:var(--gray)}
+.f-footer a{color:var(--gold);text-decoration:none;font-weight:600}
+
+/* ─── ERROR ─── */
+.f-error{
+  background:rgba(232,87,42,0.1);border:1px solid rgba(232,87,42,0.25);
+  border-radius:0.7rem;padding:0.8rem 1rem;margin-bottom:1rem;
+  font-size:0.82rem;color:#ff7a4d;display:none;
+}
+.f-error.show{display:block}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:600px){
+  .f-wrapper{padding:2rem 1.2rem 3rem}
+  .f-card{padding:1.5rem}
+  .f-services{grid-template-columns:1fr}
+  .f-budgets{grid-template-columns:1fr 1fr}
+  .f-row{grid-template-columns:1fr}
+  .f-btn-row{flex-direction:column}
+  .f-progress-line{width:30px}
+  .f-card-title{font-size:1.2rem}
+  .f-header{padding:0.8rem 1.2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="f-header">
+  <div class="f-logo">Mercadeo <span>MRR</span></div>
+  <a href="https://zambranokrystina-ui.github.io/mercadeomrr/" class="f-back">← Volver</a>
+</header>
+
+<!-- FORM -->
+<div class="f-wrapper">
+
+  <!-- PROGRESS -->
+  <div class="f-progress">
+    <div class="f-progress-step active" id="prog1">
+      <div class="f-progress-dot">1</div>
+      <div class="f-progress-label">Servicio</div>
+    </div>
+    <div class="f-progress-line" id="line1"></div>
+    <div class="f-progress-step" id="prog2">
+      <div class="f-progress-dot">2</div>
+      <div class="f-progress-label">Tus Datos</div>
+    </div>
+    <div class="f-progress-line" id="line2"></div>
+    <div class="f-progress-step" id="prog3">
+      <div class="f-progress-dot">3</div>
+      <div class="f-progress-label">Confirmar</div>
+    </div>
+  </div>
+
+  <div class="f-card">
+    <div class="f-error" id="errorMsg"></div>
+
+    <!-- ═══ STEP 1: SERVICE ═══ -->
+    <div class="f-step active" id="step1">
+      <div class="f-card-title">¿En qué te podemos <em>ayudar?</em></div>
+      <p class="f-card-sub">Selecciona el servicio que te interesa. Si no estás seguro/a, no te preocupes — te orientamos en la llamada.</p>
+
+      <div class="f-services">
+        <div class="f-service" data-service="Edición de Video Profesional">
+          <div class="f-service-radio"></div>
+          <div class="f-service-icon">🎬</div>
+          <div class="f-service-name">Edición de Video / Reels</div>
+        </div>
+        <div class="f-service" data-service="Creación de Cursos">
+          <div class="f-service-radio"></div>
+          <div class="f-service-icon">📚</div>
+          <div class="f-service-name">Creación de Cursos</div>
+        </div>
+        <div class="f-service" data-service="Ecosistemas Digitales">
+          <div class="f-service-radio"></div>
+          <div class="f-service-icon">🌐</div>
+          <div class="f-service-name">Ecosistemas Digitales</div>
+        </div>
+        <div class="f-service" data-service="Landing Pages y Páginas Web">
+          <div class="f-service-radio"></div>
+          <div class="f-service-icon">🎯</div>
+          <div class="f-service-name">Landing Pages / Web</div>
+        </div>
+        <div class="f-service" data-service="Guionización de Videos">
+          <div class="f-service-radio"></div>
+          <div class="f-service-icon">✍️</div>
+          <div class="f-service-name">Guionización de Videos</div>
+        </div>
+        <div class="f-service" data-service="Marca Personal">
+          <div class="f-service-radio"></div>
+          <div class="f-service-icon">👤</div>
+          <div class="f-service-name">Marca Personal</div>
+        </div>
+        <div class="f-service" data-service="Marketing Digital (Asesoría)">
+          <div class="f-service-radio"></div>
+          <div class="f-service-icon">📈</div>
+          <div class="f-service-name">Asesoría de Marketing</div>
+        </div>
+        <div class="f-service" data-service="Otro servicio">
+          <div class="f-service-radio"></div>
+          <div class="f-service-icon">💡</div>
+          <div class="f-service-name">Otro / No estoy seguro</div>
+        </div>
+      </div>
+
+      <div class="f-btn-row">
+        <button class="f-btn-next" onclick="goStep(2)">Siguiente →</button>
+      </div>
+    </div>
+
+    <!-- ═══ STEP 2: INFO ═══ -->
+    <div class="f-step" id="step2">
+      <div class="f-card-title">Cuéntanos sobre <em>ti</em></div>
+      <p class="f-card-sub">Necesitamos algunos datos para poder ayudarte mejor.</p>
+
+      <div class="f-row">
+        <div class="f-group">
+          <label>Nombre *</label>
+          <input type="text" placeholder="Tu nombre" id="fName" required>
+        </div>
+        <div class="f-group">
+          <label>Apellido *</label>
+          <input type="text" placeholder="Tu apellido" id="fLast" required>
+        </div>
+      </div>
+      <div class="f-row full">
+        <div class="f-group">
+          <label>Correo Electrónico *</label>
+          <input type="email" placeholder="tu@email.com" id="fEmail" required>
+        </div>
+      </div>
+      <div class="f-row full">
+        <div class="f-group">
+          <label>¿Ya tienes negocio o marca? *</label>
+          <select id="fBusiness">
+            <option value="">Selecciona una opción</option>
+            <option value="Sí, ya tengo negocio activo">Sí, ya tengo negocio activo</option>
+            <option value="Sí, pero estoy empezando">Sí, pero estoy empezando</option>
+            <option value="No, quiero empezar desde cero">No, quiero empezar desde cero</option>
+            <option value="Tengo una idea pero no he lanzado">Tengo una idea pero no he lanzado</option>
+          </select>
+        </div>
+      </div>
+      <div class="f-row full">
+        <div class="f-group">
+          <label>¿Cuál es tu presupuesto estimado?</label>
+        </div>
+      </div>
+      <div class="f-budgets">
+        <div class="f-budget" data-budget="Menos de $100">Menos de $100</div>
+        <div class="f-budget" data-budget="$100 - $300">$100 - $300</div>
+        <div class="f-budget" data-budget="$300 - $500">$300 - $500</div>
+        <div class="f-budget" data-budget="$500+">$500+</div>
+      </div>
+      <div class="f-row full">
+        <div class="f-group">
+          <label>¿Algo que quieras contarnos? (opcional)</label>
+          <textarea rows="3" placeholder="Cuéntanos brevemente qué necesitas o cuál es tu situación actual..." id="fMessage"></textarea>
+        </div>
+      </div>
+
+      <div class="f-btn-row">
+        <button class="f-btn-back" onclick="goStep(1)">← Atrás</button>
+        <button class="f-btn-next" onclick="goStep(3)">Siguiente →</button>
+      </div>
+    </div>
+
+    <!-- ═══ STEP 3: CONFIRM ═══ -->
+    <div class="f-step" id="step3">
+      <div class="f-card-title">Confirma y <em>conecta</em></div>
+      <p class="f-card-sub">Revisa tus datos. Al confirmar te redirigimos a WhatsApp para agendar tu consulta.</p>
+
+      <div class="f-summary" id="summaryBox">
+        <!-- Filled by JS -->
+      </div>
+
+      <div class="f-btn-row">
+        <button class="f-btn-back" onclick="goStep(2)">← Editar</button>
+        <button class="f-btn-whatsapp" onclick="sendToWhatsApp()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Enviar a WhatsApp
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="f-trust">
+    <div class="f-trust-item"><span>🔒</span> Datos seguros</div>
+    <div class="f-trust-item"><span>⚡</span> Respuesta en 24h</div>
+    <div class="f-trust-item"><span>📞</span> Consulta gratis</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="f-footer">
+  <p>© 2026 <a href="https://zambranokrystina-ui.github.io/mercadeomrr/">Mercadeo MRR LLC</a>. Todos los derechos reservados.</p>
+</div>
+
+<script>
+// ═══════════════════════════════════════
+// 🔗 CONFIGURA AQUÍ
+// ═══════════════════════════════════════
+const WHATSAPP_NUMBER = '19197715951'; // ← TU NÚMERO DE WHATSAPP (sin + ni espacios)
+const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbythzGxdipvcFrgKlJeUK0SvKAJyGyYG1cbGCQiXa6iJMiaO1z-OMBTo-NgYf5nF-VP/exec'; // ← Pega aquí tu URL de Google Apps Script (ver instrucciones)
+// ═══════════════════════════════════════
+
+let selectedService = '';
+let selectedBudget = '';
+
+// Service selector
+document.querySelectorAll('.f-service').forEach(s => {
+  s.addEventListener('click', () => {
+    document.querySelectorAll('.f-service').forEach(x => x.classList.remove('sel'));
+    s.classList.add('sel');
+    selectedService = s.dataset.service;
+  });
+});
+
+// Budget selector
+document.querySelectorAll('.f-budget').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.f-budget').forEach(x => x.classList.remove('sel'));
+    b.classList.add('sel');
+    selectedBudget = b.dataset.budget;
+  });
+});
+
+// Auto-select service from URL param
+const urlParams = new URLSearchParams(window.location.search);
+const serviceParam = urlParams.get('servicio');
+if (serviceParam) {
+  document.querySelectorAll('.f-service').forEach(s => {
+    if (s.dataset.service.toLowerCase().includes(serviceParam.toLowerCase())) {
+      s.click();
+    }
+  });
+}
+
+function showError(msg) {
+  const el = document.getElementById('errorMsg');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 4000);
+}
+
+function goStep(step) {
+  if (step === 2 && !selectedService) {
+    showError('Por favor selecciona un servicio para continuar.');
+    return;
+  }
+  if (step === 3) {
+    const name = document.getElementById('fName').value.trim();
+    const last = document.getElementById('fLast').value.trim();
+    const email = document.getElementById('fEmail').value.trim();
+    const biz = document.getElementById('fBusiness').value;
+    
+    if (!name || !last || !email || !biz) {
+      showError('Por favor completa todos los campos obligatorios (*).');
+      return;
+    }
+
+    const summary = document.getElementById('summaryBox');
+    summary.innerHTML = `
+      <div class="f-summary-row"><span class="lab">Servicio</span><span class="val">${selectedService}</span></div>
+      <div class="f-summary-row"><span class="lab">Nombre</span><span class="val">${name} ${last}</span></div>
+      <div class="f-summary-row"><span class="lab">Email</span><span class="val">${email}</span></div>
+      <div class="f-summary-row"><span class="lab">Negocio</span><span class="val">${biz}</span></div>
+      ${selectedBudget ? `<div class="f-summary-row"><span class="lab">Presupuesto</span><span class="val">${selectedBudget}</span></div>` : ''}
+    `;
+  }
+
+  document.querySelectorAll('.f-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step' + step).classList.add('active');
+
+  for (let i = 1; i <= 3; i++) {
+    const prog = document.getElementById('prog' + i);
+    prog.classList.remove('active', 'done');
+    if (i < step) prog.classList.add('done');
+    if (i === step) prog.classList.add('active');
+  }
+  document.getElementById('line1').classList.toggle('done', step >= 2);
+  document.getElementById('line2').classList.toggle('done', step >= 3);
+  window.scrollTo(0, 0);
+}
+
+// ═══════════════════════════════════════
+// ENVIAR A GOOGLE SHEETS + WHATSAPP
+// ═══════════════════════════════════════
+function sendToWhatsApp() {
+  const name = document.getElementById('fName').value.trim();
+  const last = document.getElementById('fLast').value.trim();
+  const email = document.getElementById('fEmail').value.trim();
+  const biz = document.getElementById('fBusiness').value;
+  const msg = document.getElementById('fMessage').value.trim();
+
+  // Cambiar botón a loading
+  const btn = document.querySelector('.f-btn-whatsapp');
+  const originalText = btn.innerHTML;
+  btn.innerHTML = '⏳ Guardando datos...';
+  btn.disabled = true;
+
+  // Datos para Google Sheets
+  const data = {
+    fecha: new Date().toLocaleString('es-US', { timeZone: 'America/Chicago' }),
+    nombre: name + ' ' + last,
+    email: email,
+    servicio: selectedService,
+    negocio: biz,
+    presupuesto: selectedBudget || 'No especificado',
+    mensaje: msg || 'Sin mensaje',
+    fuente: 'Formulario Mercadeo MRR'
+  };
+
+  // Enviar a Google Sheets
+  fetch(GOOGLE_SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(() => {
+    console.log('✅ Datos enviados a Google Sheets');
+  })
+  .catch(err => {
+    console.log('⚠️ Error enviando a Sheets (el lead se envía a WhatsApp igual):', err);
+  })
+  .finally(() => {
+    // Siempre abre WhatsApp (aunque Sheets falle)
+    let text = `¡Hola! 👋 Soy *${name} ${last}* y me interesa el servicio de *${selectedService}* de Mercadeo MRR.\n\n`;
+    text += `📧 Email: ${email}\n`;
+    text += `💼 Negocio: ${biz}\n`;
+    if (selectedBudget) text += `💰 Presupuesto: ${selectedBudget}\n`;
+    if (msg) text += `\n📝 Nota: ${msg}\n`;
+    text += `\n¿Podemos agendar una llamada? ¡Gracias!`;
+
+    const encoded = encodeURIComponent(text);
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
+
+    btn.innerHTML = '✅ ¡Listo! Abriendo WhatsApp...';
+    setTimeout(() => {
+      window.open(url, '_blank');
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+    }, 800);
+  });
+}
+</script>
+
+</body>
+</html>
