@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIA CLUB Academy — La Academia #1 de Marketing Digital en Español</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0b2e28;
+  --bg-deep:#071e1a;
+  --card:#0f3830;
+  --card-hover:#144a40;
+  --emerald:#1a6b5a;
+  --emerald-light:#238c76;
+  --gold:#d4b85a;
+  --gold-light:#e8d48a;
+  --gold-dark:#b89a3e;
+  --gold-glow:rgba(212,184,90,0.25);
+  --white:#faf6ed;
+  --cream:#f0eadc;
+  --gray:#8faa9f;
+  --gray-light:#c2d4cb;
+  --font-display:'Syne',sans-serif;
+  --font-serif:'Playfair Display',serif;
+  --font-body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:auto}
+body{background:var(--bg);color:var(--white);font-family:var(--font-body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:-1}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg-deep)}::-webkit-scrollbar-thumb{background:var(--gold-dark);border-radius:3px}
+a{text-decoration:none}
+
+/* ─── TOP BAR ─── */
+.top-bar{background:linear-gradient(90deg,var(--gold-dark),var(--gold),var(--gold-dark));background-size:200% 100%;animation:barShimmer 4s ease infinite;text-align:center;padding:0.7rem 1rem;font-size:0.82rem;font-weight:700;letter-spacing:0.05em;color:var(--bg-deep)}
+@keyframes barShimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
+/* ─── NAV ─── */
+nav{position:relative;top:0;z-index:1000;padding:1rem 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(11,46,40,0.95);border-bottom:1px solid rgba(212,184,90,0.12)}
+.logo{font-family:var(--font-display);font-weight:800;font-size:1.2rem;letter-spacing:0.05em;color:var(--white)}.logo span{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:1.5rem}
+.nav-link{color:var(--gray-light);font-size:0.85rem;font-weight:500;transition:color .3s}
+.nav-link:hover{color:var(--gold)}
+.nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--bg-deep);padding:0.6rem 1.6rem;border-radius:2rem;font-weight:700;font-size:0.85rem;transition:transform 0.3s,box-shadow 0.3s}
+.nav-cta:hover{transform:scale(1.05);box-shadow:0 0 30px var(--gold-glow)}
+
+/* ─── HERO ─── */
+.hero{min-height:auto;display:flex;align-items:center;justify-content:center;text-align:center;padding:4rem 2rem 4rem;position:relative;overflow:hidden}
+.hero-glow{position:absolute;border-radius:50%;filter:blur(200px);pointer-events:none}
+.hero-glow.g1{width:800px;height:800px;background:var(--emerald);top:-350px;left:50%;transform:translateX(-50%);opacity:0.15}
+.hero-glow.g2{width:600px;height:600px;background:var(--gold);bottom:-300px;right:-200px;opacity:0.05}
+.hero-glow.g3{width:400px;height:400px;background:var(--gold);top:20%;left:-200px;opacity:0.04}
+.hero-inner{position:relative;z-index:2;max-width:850px}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(212,184,90,0.1);border:1px solid rgba(212,184,90,0.2);padding:0.45rem 1.2rem;border-radius:2rem;font-size:0.75rem;font-weight:700;color:var(--gold-light);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:2rem;animation:fadeUp .7s ease both}
+.hero-badge .pulse{width:7px;height:7px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.6)}}
+.hero h1{font-family:var(--font-display);font-size:clamp(2.4rem,5.5vw,4.5rem);font-weight:800;line-height:1.05;margin-bottom:1.5rem;animation:fadeUp .7s ease .1s both}
+.hero h1 em{font-family:var(--font-serif);font-style:italic;color:var(--gold-light);font-weight:400}
+.hero-sub{font-size:1.1rem;line-height:1.7;color:var(--gray-light);max-width:660px;margin:0 auto 2.5rem;animation:fadeUp .7s ease .2s both}
+.hero-cta-group{display:flex;flex-direction:column;align-items:center;gap:1rem;animation:fadeUp .7s ease .3s both}
+.btn-gold{display:inline-flex;align-items:center;gap:0.5rem;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--bg-deep);padding:1.1rem 2.8rem;border-radius:3rem;font-weight:700;font-size:1.05rem;letter-spacing:0.03em;transition:transform 0.3s,box-shadow 0.3s;border:none;cursor:pointer;box-shadow:0 4px 30px var(--gold-glow)}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 8px 50px rgba(212,184,90,0.4)}
+.btn-outline{display:inline-flex;align-items:center;gap:0.5rem;background:transparent;color:var(--cream);padding:1rem 2.4rem;border-radius:3rem;font-weight:600;font-size:0.95rem;border:1px solid rgba(212,184,90,0.25);transition:all 0.3s;cursor:pointer}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);background:rgba(212,184,90,0.05)}
+.hero-trust{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem;animation:fadeUp .7s ease .4s both}
+.trust-item{font-size:0.8rem;color:var(--gray);display:flex;align-items:center;gap:0.4rem}.trust-item span{color:var(--gold-light);font-size:1rem}
+@keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+
+/* ─── SECTION ─── */
+.section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
+.section-label{display:inline-flex;align-items:center;gap:0.6rem;font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.section-label::before{content:'';width:28px;height:1.5px;background:var(--gold)}
+.section-title{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;line-height:1.1;margin-bottom:1rem}
+.section-title em{font-family:var(--font-serif);font-style:italic;color:var(--gold-light);font-weight:400}
+.section-desc{font-size:1rem;color:var(--gray);max-width:580px;line-height:1.7;margin-bottom:3rem}
+
+/* ─── PAIN POINTS ─── */
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.pain-item{display:flex;align-items:flex-start;gap:0.8rem;background:var(--card);border:1px solid rgba(212,184,90,0.06);border-radius:1rem;padding:1.3rem 1.5rem;transition:all .3s}
+.pain-item:hover{border-color:rgba(212,184,90,0.18);background:var(--card-hover)}
+.pain-check{color:var(--gold);font-size:1.1rem;flex-shrink:0;margin-top:0.1rem}
+.pain-item p{font-size:0.9rem;color:var(--gray-light);line-height:1.5}
+
+/* ─── BENEFITS ─── */
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem}
+.benefit-card{background:var(--card);border:1px solid rgba(212,184,90,0.06);border-radius:1.1rem;padding:1.8rem;transition:all .4s;position:relative;overflow:hidden}
+.benefit-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .4s}
+.benefit-card:hover{background:var(--card-hover);border-color:rgba(212,184,90,0.18);transform:translateY(-3px)}
+.benefit-card:hover::after{opacity:1}
+.benefit-icon{font-size:1.6rem;margin-bottom:1rem;display:block}
+.benefit-card h3{font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:0.4rem}
+.benefit-card p{font-size:0.85rem;color:var(--gray);line-height:1.6}
+
+/* ─── MODULES ─── */
+.modules-section-block{background:var(--card);border:1px solid rgba(212,184,90,0.08);border-radius:1.2rem;padding:2rem;margin-bottom:1.2rem}
+.modules-section-title{font-family:var(--font-display);font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:flex;align-items:center;gap:0.6rem}
+.modules-section-title::before{content:'';width:20px;height:1.5px;background:var(--gold)}
+.mod-list{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 1.5rem}
+.mod-item{font-size:0.85rem;color:var(--gray-light);padding:0.4rem 0;display:flex;align-items:flex-start;gap:0.5rem;line-height:1.4}
+.mod-item::before{content:'▸';color:var(--gold);flex-shrink:0;font-size:0.7rem;margin-top:0.15rem}
+
+/* ─── STATS ─── */
+.stats-bar{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;padding:3rem 2rem;border-top:1px solid rgba(212,184,90,0.1);border-bottom:1px solid rgba(212,184,90,0.1);background:rgba(212,184,90,0.03)}
+.stat-block{text-align:center}.stat-block .num{font-family:var(--font-display);font-size:2.2rem;font-weight:800;color:var(--gold-light);line-height:1}
+.stat-block .lab{font-size:0.75rem;color:var(--gray);text-transform:uppercase;letter-spacing:0.1em;margin-top:0.3rem}
+
+/* ─── TESTIMONIALS ─── */
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
+.testimonial-card{background:var(--card);border:1px solid rgba(212,184,90,0.06);border-radius:1.1rem;padding:2rem;transition:all .3s}
+.testimonial-card:hover{border-color:rgba(212,184,90,0.15)}
+.testimonial-stars{color:var(--gold);font-size:0.85rem;margin-bottom:0.8rem}
+.testimonial-card blockquote{font-size:0.88rem;color:var(--gray-light);line-height:1.6;font-style:italic;margin-bottom:1rem}
+.testimonial-author{font-family:var(--font-display);font-weight:700;font-size:0.85rem;color:var(--gold-light)}
+.testimonial-result{font-size:0.75rem;color:var(--gray);margin-top:0.2rem}
+
+/* ─── FOR WHO ─── */
+.for-who-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.for-card{background:var(--card);border-radius:1.2rem;padding:2rem;border:1px solid rgba(212,184,90,0.06)}
+.for-card.yes{border-top:2px solid var(--gold)}
+.for-card.no{border-top:2px solid var(--gray)}
+.for-card h3{font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:1.2rem}
+.for-card.yes h3{color:var(--gold-light)}.for-card.no h3{color:var(--gray-light)}
+.for-list{list-style:none;display:flex;flex-direction:column;gap:0.7rem}
+.for-list li{font-size:0.88rem;color:var(--gray-light);display:flex;align-items:flex-start;gap:0.6rem;line-height:1.5}
+.for-list li .icon{flex-shrink:0;font-size:0.8rem;margin-top:0.15rem}
+.for-card.yes .icon{color:var(--gold)}.for-card.no .icon{color:var(--gray)}
+
+/* ─── PRICING ─── */
+.pricing-section{padding:5rem 2rem;text-align:center;position:relative}
+.pricing-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(212,184,90,0.05) 0%,transparent 60%);pointer-events:none}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1000px;margin:2rem auto 0;position:relative;z-index:2}
+.price-card{background:var(--card);border:1px solid rgba(212,184,90,0.08);border-radius:1.5rem;padding:2.5rem 2rem;text-align:center;position:relative;transition:all .4s}
+.price-card:hover{border-color:rgba(212,184,90,0.22);transform:translateY(-4px)}
+.price-card.featured{border-color:rgba(212,184,90,0.35);background:linear-gradient(145deg,rgba(212,184,90,0.06),var(--card));transform:scale(1.03)}
+.price-card.featured:hover{transform:scale(1.06)}
+.price-popular{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--bg-deep);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.35rem 1.2rem;border-radius:2rem;white-space:nowrap}
+.price-label{font-family:var(--font-display);font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);margin-bottom:0.8rem;font-weight:600}
+.price-amount{font-family:var(--font-display);font-size:3rem;font-weight:800;line-height:1;margin-bottom:0.3rem;color:var(--white)}
+.price-amount span{font-size:0.85rem;color:var(--gray);font-weight:400}
+.price-sub{font-size:0.82rem;color:var(--gray);margin-bottom:1.5rem}
+.price-features{list-style:none;text-align:left;margin-bottom:2rem}
+.price-features li{font-size:0.85rem;color:var(--gray-light);padding:0.45rem 0;border-bottom:1px solid rgba(212,184,90,0.05);display:flex;align-items:center;gap:0.5rem}
+.price-features li::before{content:'✓';color:var(--gold);font-weight:700;font-size:0.75rem}
+.price-card .btn-gold,.price-card .btn-outline{width:100%;justify-content:center;padding:0.9rem 1.5rem;font-size:0.95rem}
+.price-guarantee{margin-top:1.5rem;font-size:0.78rem;color:var(--gray);display:flex;align-items:center;justify-content:center;gap:0.4rem}
+
+/* ─── FAQ ─── */
+.faq-list{max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:0.8rem}
+.faq-item{background:var(--card);border:1px solid rgba(212,184,90,0.06);border-radius:1rem;overflow:hidden;transition:border-color .3s}
+.faq-item:hover{border-color:rgba(212,184,90,0.18)}
+.faq-q{padding:1.3rem 1.5rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-display);font-weight:600;font-size:0.95rem;user-select:none}
+.faq-q .arrow{color:var(--gold);font-size:1.2rem;transition:transform .3s}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-a-inner{padding:0 1.5rem 1.3rem;font-size:0.88rem;color:var(--gray);line-height:1.7}
+.faq-item.open .faq-a{max-height:300px}.faq-item.open .arrow{transform:rotate(45deg)}
+
+/* ─── FINAL CTA ─── */
+.final-cta{text-align:center;padding:6rem 2rem;position:relative}
+.final-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center bottom,rgba(212,184,90,0.07) 0%,transparent 60%);pointer-events:none}
+.final-cta h2{font-family:var(--font-display);font-size:clamp(2rem,4.5vw,3.4rem);font-weight:800;line-height:1.1;margin-bottom:1rem;position:relative;z-index:2}
+.final-cta h2 em{font-family:var(--font-serif);font-style:italic;color:var(--gold-light);font-weight:400}
+.final-cta p{font-size:1rem;color:var(--gray);margin-bottom:2rem;position:relative;z-index:2}
+.final-cta .btn-gold{position:relative;z-index:2}
+
+/* ─── FOOTER ─── */
+footer{border-top:1px solid rgba(212,184,90,0.1);padding:2rem;text-align:center}
+footer p{font-size:0.75rem;color:var(--gray)}footer a{color:var(--gold);font-weight:600}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1024px){.pricing-grid{grid-template-columns:1fr;max-width:420px}.price-card.featured{transform:none}.price-card.featured:hover{transform:translateY(-4px)}}
+@media(max-width:768px){nav{padding:1rem 1.5rem}.nav-link{display:none}.section{padding:3.5rem 1.5rem}.mod-list,.for-who-grid,.benefits-grid,.pain-grid{grid-template-columns:1fr}.pricing-section,.final-cta{padding:3.5rem 1.5rem}.hero{padding:3rem 1.5rem 3rem}.stats-bar{gap:1.5rem}}
+
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">⭐ La Academia #1 de Marketing Digital en Habla Hispana — 32 Módulos · Acceso de por vida · EST. 2024</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">DIA <span>Academy</span> CLUB</div>
+  <div class="nav-right">
+    <a href="#modulos" class="nav-link">Módulos</a>
+    <a href="#comprar" class="nav-link">Precios</a>
+    <a href="#comprar" class="nav-cta">Inscribirme Ahora</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow g1"></div>
+  <div class="hero-glow g2"></div>
+  <div class="hero-glow g3"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="pulse"></span> Digital Income Academy — En Español</div>
+    <h1>Aprende a monetizar en internet y construye tu <em>marca personal exitosa</em> en 90 días</h1>
+    <p class="hero-sub">El programa más completo para generar ingresos en internet, escalar tu negocio, vender productos digitales y aplicar estrategias de marketing — incluso si empiezas desde cero.</p>
+    <div class="hero-cta-group">
+      <a href="#comprar" class="btn-gold">Quiero Acceso Ahora — $547 USD →</a>
+      <a href="#modulos" class="btn-outline">Ver los 32 Módulos</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item"><span>📚</span> 32 Módulos</div>
+      <div class="trust-item"><span>♾️</span> Acceso de Por Vida</div>
+      <div class="trust-item"><span>🎯</span> 100% en Español</div>
+      <div class="trust-item"><span>🤝</span> Comunidad Exclusiva</div>
+      <div class="trust-item"><span>💰</span> 85% Comisión Afiliado</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-block"><div class="num">500+</div><div class="lab">Estudiantes</div></div>
+  <div class="stat-block"><div class="num">2,500+</div><div class="lab">Comunidad</div></div>
+  <div class="stat-block"><div class="num">$1M+</div><div class="lab">Ventas Generadas</div></div>
+  <div class="stat-block"><div class="num">32</div><div class="lab">Módulos</div></div>
+</div>
+
+<!-- PAIN POINTS -->
+<div class="section reveal">
+  <div class="section-label">¿Te Identificas?</div>
+  <h2 class="section-title">Si estás aquí es porque <em>quieres más</em></h2>
+  <p class="section-desc">Lo más probable es que deseas aprender cómo ganar dinero en línea y construir una marca personal próspera.</p>
+  <div class="pain-grid">
+    <div class="pain-item"><span class="pain-check">✔</span><p>Quieres crear contenido para Instagram, TikTok y YouTube, pero no sabes cómo definir tu nicho y destacar.</p></div>
+    <div class="pain-item"><span class="pain-check">✔</span><p>Tienes un negocio propio pero no conoces estrategias reales de marketing digital para potenciarlo.</p></div>
+    <div class="pain-item"><span class="pain-check">✔</span><p>Has comprado cursos pero nunca te has sentido alineado con ninguno — quieres algo que realmente impacte.</p></div>
+    <div class="pain-item"><span class="pain-check">✔</span><p>Tienes curiosidad sobre cómo monetizar con tus redes pero no sabes por dónde empezar.</p></div>
+    <div class="pain-item"><span class="pain-check">✔</span><p>Has escuchado sobre marketing de afiliados pero no sabes cómo tener éxito con Amazon, TikTok y más.</p></div>
+    <div class="pain-item"><span class="pain-check">✔</span><p>Sueñas con colaborar con marcas y hoteles pero no sabes cómo presentarte ni cómo comenzar con UGC.</p></div>
+  </div>
+</div>
+
+<!-- WHAT YOU GET -->
+<div class="section reveal">
+  <div class="section-label">¿Qué Aprenderás?</div>
+  <h2 class="section-title">Todo lo que necesitas para <em>triunfar</em> en lo digital</h2>
+  <p class="section-desc">Un curso integral desde fundamentos hasta estrategias avanzadas. Sin relleno, todo aplicable.</p>
+  <div class="benefits-grid">
+    <div class="benefit-card"><span class="benefit-icon">📱</span><h3>Redes Sociales desde Cero</h3><p>Domina Instagram, TikTok y YouTube. Reels virales, carruseles, SEO y crecimiento orgánico.</p></div>
+    <div class="benefit-card"><span class="benefit-icon">💰</span><h3>Monetización Real</h3><p>Marketing de afiliados, Amazon, productos digitales, UGC, tiendas online y múltiples fuentes de ingresos.</p></div>
+    <div class="benefit-card"><span class="benefit-icon">🎨</span><h3>Canva & CapCut</h3><p>Diseña y edita como profesional sin experiencia previa. Contenido de alta calidad desde tu teléfono.</p></div>
+    <div class="benefit-card"><span class="benefit-icon">🤖</span><h3>Inteligencia Artificial</h3><p>IA para emprendedores: automatiza, crea contenido y hasta clona tu presencia digital.</p></div>
+    <div class="benefit-card"><span class="benefit-icon">📢</span><h3>Meta Ads & Google Ads</h3><p>La ciencia de los anuncios rentables. Aprende publicidad pagada que multiplica tu inversión.</p></div>
+    <div class="benefit-card"><span class="benefit-icon">🛒</span><h3>Tiendas & Funnels</h3><p>SystemIO, Shopify, StanStore, Beacons, Etsy. Tu ecosistema de ventas completo.</p></div>
+  </div>
+</div>
+
+<!-- 32 MODULES -->
+<div class="section reveal" id="modulos">
+  <div class="section-label">Contenido Completo</div>
+  <h2 class="section-title">32 módulos <em>paso a paso</em></h2>
+  <p class="section-desc">4 secciones, de principiante a experto. Cada módulo diseñado para aplicar de inmediato.</p>
+
+  <div class="modules-section-block">
+    <div class="modules-section-title">Sección 1 — Domina el Marketing Digital y Creación de Contenido</div>
+    <div class="mod-list">
+      <div class="mod-item">Fundamentos del Marketing Digital</div>
+      <div class="mod-item">Dominando Instagram para el Éxito</div>
+      <div class="mod-item">El Arte de los Reels Virales (SEO)</div>
+      <div class="mod-item">Creando Contenido desde 0 Conocimiento</div>
+      <div class="mod-item">Ventas Emocionales</div>
+      <div class="mod-item">De Desconocido a Influencia (Marca Personal)</div>
+      <div class="mod-item">El Arte de los Carruseles Virales</div>
+      <div class="mod-item">Hackeando TikTok</div>
+      <div class="mod-item">Fotografía y Videografía con tu Teléfono</div>
+      <div class="mod-item">El Arte del Storytelling</div>
+      <div class="mod-item">Edición con CapCut (Celular y PC)</div>
+    </div>
+  </div>
+
+  <div class="modules-section-block">
+    <div class="modules-section-title">Sección 2 — Monetiza con Estrategias Comprobadas</div>
+    <div class="mod-list">
+      <div class="mod-item">Automatización con ManyChat</div>
+      <div class="mod-item">Inteligencia Artificial para Emprendedores</div>
+      <div class="mod-item">Todo sobre NOTION (Organización)</div>
+      <div class="mod-item">CANVA: Diseñar sin ser Experto</div>
+      <div class="mod-item">El Arte de Manifestar</div>
+      <div class="mod-item">Meta Ads: Anuncios Rentables</div>
+      <div class="mod-item">Google Ads: Publicidad de Alta Demanda</div>
+      <div class="mod-item">Lanza Negocios como un Experto</div>
+      <div class="mod-item">Crecimiento Estratégico y Cálculo de Precios</div>
+    </div>
+  </div>
+
+  <div class="modules-section-block">
+    <div class="modules-section-title">Sección 3 — Construye tu Propio Negocio Digital</div>
+    <div class="mod-list">
+      <div class="mod-item">El Arte del Creador UGC</div>
+      <div class="mod-item">Vender en Etsy (paso a paso)</div>
+      <div class="mod-item">Amazon: Afiliados, Influencer y Reseñas</div>
+      <div class="mod-item">Crea tu Producto Digital desde 0</div>
+      <div class="mod-item">Embudos y Sitios Web (SystemIO y Shopify)</div>
+      <div class="mod-item">Crea tu Tienda Digital (StanStore y Beacons)</div>
+    </div>
+  </div>
+
+  <div class="modules-section-block">
+    <div class="modules-section-title">Sección 4 — El 1%: Domina el Juego Digital</div>
+    <div class="mod-list">
+      <div class="mod-item">YouTube 101</div>
+      <div class="mod-item">Conviértete en Social Media Manager</div>
+      <div class="mod-item">Vuelve tu Negocio una Entidad (LLC)</div>
+      <div class="mod-item">Hackeando el Network Marketing</div>
+      <div class="mod-item">Todo sobre HOTMART</div>
+      <div class="mod-item">Crea tu Clon con Inteligencia Artificial</div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="section reveal">
+  <div class="section-label">Resultados Reales</div>
+  <h2 class="section-title">Lo que dicen nuestros <em>estudiantes</em></h2>
+  <p class="section-desc">Personas reales que tomaron acción y transformaron su vida con DIA Club.</p>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <blockquote>"DIA Club me enseñó cómo explotar YouTube para mi emprendimiento de repostería. Acabo de pagar mi logo para continuar con mis talleres de forma más profesional."</blockquote>
+      <div class="testimonial-author">— Dayana Ruiz</div>
+      <div class="testimonial-result">Emprendedora de repostería</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <blockquote>"Pude crear un negocio desde cero, lo que antes era solo un hobby. Gracias a aplicar lo que aprendí, he logrado generar ventas reales."</blockquote>
+      <div class="testimonial-author">— Susana Mursuli</div>
+      <div class="testimonial-result">De hobby a negocio real</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <blockquote>"Ya empecé y waooo, sin palabras. Me encanta como no es solo leer, tiene ver y escuchar. La plataforma es muy fácil de usar, todo pensado al detalle."</blockquote>
+      <div class="testimonial-author">— Aelita Caamaño</div>
+      <div class="testimonial-result">Estudiante DIA Club</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <blockquote>"$2,500 extra en un mes desde Panamá. Ser consistente lleva a que otros se interesen por lo nuevo que están viendo en ti."</blockquote>
+      <div class="testimonial-author">— Gaby Pereira</div>
+      <div class="testimonial-result">$2,500 extra/mes desde Panamá</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOR WHO -->
+<div class="section reveal">
+  <div class="section-label">¿Es Para Ti?</div>
+  <h2 class="section-title">Sé honesto <em>contigo</em></h2>
+  <div class="for-who-grid">
+    <div class="for-card yes">
+      <h3>✅ Es para ti si…</h3>
+      <ul class="for-list">
+        <li><span class="icon">⭐</span> Quieres emprender online pero no sabes por dónde empezar</li>
+        <li><span class="icon">⭐</span> Ya tienes un negocio físico y quieres llevarlo al mundo digital</li>
+        <li><span class="icon">⭐</span> Quieres aprender marketing de afiliados y generar ingresos</li>
+        <li><span class="icon">⭐</span> Sueñas con ser creador de contenido o influencer</li>
+        <li><span class="icon">⭐</span> Quieres crear y vender productos digitales</li>
+        <li><span class="icon">⭐</span> Buscas un sistema paso a paso, sin complicaciones</li>
+      </ul>
+    </div>
+    <div class="for-card no">
+      <h3>❌ No es para ti si…</h3>
+      <ul class="for-list">
+        <li><span class="icon">—</span> Buscas hacerte rico de la noche a la mañana</li>
+        <li><span class="icon">—</span> No estás dispuesto a invertir tiempo en aprender</li>
+        <li><span class="icon">—</span> Prefieres excusas antes que acción</li>
+        <li><span class="icon">—</span> No crees en el poder del marketing digital</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div class="pricing-section" id="comprar">
+  <div class="section-label" style="justify-content:center;display:flex">Elige Tu Plan</div>
+  <h2 class="section-title" style="text-align:center">Invierte en tu <em>libertad financiera</em></h2>
+  <p style="text-align:center;color:var(--gray);margin-bottom:1rem;font-size:0.95rem">Todos los planes incluyen acceso de por vida + 32 módulos + comunidad exclusiva</p>
+
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-label">Plan de Pagos</div>
+      <div class="price-amount">$137<span>/mes</span></div>
+      <p class="price-sub">4 pagos mensuales</p>
+      <ul class="price-features">
+        <li>32 módulos completos</li>
+        <li>Acceso de por vida</li>
+        <li>Comunidad exclusiva</li>
+        <li>Derecho de afiliado (85%)</li>
+        <li>Actualizaciones incluidas</li>
+      </ul>
+      <!-- 🔗 REEMPLAZA CON TU PASARELA -->
+      <a href="https://www.mercadeomrr.com/checkout/plan-pagos" class="btn-outline">Elegir Plan →</a>
+    </div>
+
+    <div class="price-card featured">
+      <div class="price-popular">Más Popular</div>
+      <div class="price-label">Pago Único</div>
+      <div class="price-amount">$547<span> USD</span></div>
+      <p class="price-sub">Un solo pago — Mejor precio</p>
+      <ul class="price-features">
+        <li>32 módulos completos</li>
+        <li>Acceso de por vida</li>
+        <li>Comunidad exclusiva</li>
+        <li>Derecho de afiliado (85%)</li>
+        <li>Actualizaciones incluidas</li>
+        <li>Curso multilingüe</li>
+      </ul>
+      <!-- 🔗 REEMPLAZA CON TU PASARELA -->
+      <a href="https://www.mercadeomrr.com/checkout/pago-unico" class="btn-gold">Entrar al Club →</a>
+      <div class="price-guarantee">🔒 Pago seguro — Acceso inmediato</div>
+    </div>
+
+    <div class="price-card">
+      <div class="price-label">Financiamiento</div>
+      <div class="price-amount" style="font-size:2rem">Klarna / Affirm</div>
+      <p class="price-sub">AfterPay (Solo USA)</p>
+      <ul class="price-features">
+        <li>32 módulos completos</li>
+        <li>Acceso de por vida</li>
+        <li>Comunidad exclusiva</li>
+        <li>Derecho de afiliado (85%)</li>
+        <li>Paga a tu ritmo</li>
+      </ul>
+      <!-- 🔗 REEMPLAZA CON TU PASARELA -->
+      <a href="https://www.mercadeomrr.com/checkout/financiamiento" class="btn-outline">Ver Opciones →</a>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section reveal">
+  <div class="section-label" style="justify-content:center;display:flex">Preguntas Frecuentes</div>
+  <h2 class="section-title" style="text-align:center">Resolvemos tus <em>dudas</em></h2>
+  <br><br>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q">¿Necesito experiencia previa? <span class="arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">No. El curso está diseñado desde cero para principiantes. Los módulos van desde lo más básico hasta estrategias avanzadas, guiándote paso a paso.</div></div></div>
+    <div class="faq-item"><div class="faq-q">¿Cuánto tiempo tengo acceso al curso? <span class="arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">Acceso de por vida. Pagas una vez y tienes acceso ilimitado a todos los módulos y actualizaciones futuras. Aprende a tu ritmo.</div></div></div>
+    <div class="faq-item"><div class="faq-q">¿Cómo funciona el programa de afiliados? <span class="arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">Puedes ganar una comisión del 85% por cada venta que realices al promocionar el curso. Recibes un enlace único o puedes venderlo a través de tus propias pasarelas de pago.</div></div></div>
+    <div class="faq-item"><div class="faq-q">¿El curso está en español? <span class="arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">Sí, 100% en español. También disponible en inglés y otros idiomas. Es un curso multilingüe.</div></div></div>
+    <div class="faq-item"><div class="faq-q">¿Qué herramientas necesito? <span class="arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">Solo un teléfono o computadora con internet. Trabajamos con herramientas accesibles como Canva, CapCut, SystemIO y redes sociales.</div></div></div>
+    <div class="faq-item"><div class="faq-q">¿Hay soporte si me quedo estancado/a? <span class="arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">Sí. Tienes acceso al equipo de soporte y a la comunidad exclusiva donde puedes hacer preguntas y recibir apoyo continuo.</div></div></div>
+    <div class="faq-item"><div class="faq-q">¿Puedo pagar en cuotas? <span class="arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">Sí. Ofrecemos plan de 4 pagos de $137/mes, o financiamiento con Klarna, Affirm y AfterPay (solo USA). También el pago único de $547.</div></div></div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Tu negocio digital<br>empieza <em>hoy</em></h2>
+  <p>No esperes más. Cada día que pasa es un día menos construyendo tu libertad financiera.</p>
+  <a href="#comprar" class="btn-gold" style="font-size:1.1rem;padding:1.2rem 3rem;">Quiero Acceso a DIA Club →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Vendido por <a href="https://www.mercadeomrr.com">Mercadeo MRR LLC</a> · Producto de Digital Income Academy LLC · EST. 2024</p>
+  <p style="margin-top:0.5rem">© 2026 Mercadeo MRR LLC. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.parentElement;
+    document.querySelectorAll('.faq-item').forEach(i=>{if(i!==item)i.classList.remove('open')});
+    item.classList.toggle('open');
+  });
+});
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>
