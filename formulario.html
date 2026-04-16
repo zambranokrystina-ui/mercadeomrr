@@ -4,24 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agenda tu Consulta — Mercadeo MRR LLC</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#0a0a0a;
-  --card:#111111;
-  --card-hover:#1a1a1a;
-  --gold:#d4a843;
-  --gold-light:#f0d078;
-  --gold-dark:#a07820;
-  --white:#f5f0e8;
-  --gray:#8a8680;
-  --gray-light:#c5c0b8;
-  --accent:#e8572a;
-  --input-bg:#0e0e0e;
-  --input-border:rgba(212,168,67,0.15);
+  --bg:#EDEBE6;
+  --card:#ffffff;
+  --card-hover:#f5f3ee;
+  --gold:#9A7B32;
+  --gold-light:#7a6228;
+  --gold-dark:#605343;
+  --white:#2a2518;
+  --gray:#7a7368;
+  --gray-light:#605343;
+  --input-bg:#f8f6f1;
+  --input-border:rgba(154,123,50,0.18);
   --green:#25d366;
-  --font-display:'Syne',sans-serif;
+  --font-display:'Poppins',sans-serif;
   --font-serif:'Playfair Display',serif;
   --font-body:'DM Sans',sans-serif;
 }
@@ -30,15 +29,14 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);-webki
 
 /* ─── HEADER ─── */
 .f-header{
-  background:rgba(10,10,10,0.95);
-  border-bottom:1px solid rgba(212,168,67,0.1);
+  background:rgba(237,235,230,0.95);
+  border-bottom:1px solid rgba(154,123,50,0.1);
   padding:1rem 2rem;
   display:flex;align-items:center;justify-content:space-between;
 }
-.f-logo{font-family:var(--font-display);font-weight:800;font-size:1.1rem;color:var(--white)}
-.f-logo span{color:var(--gold)}
+.f-logo img{height:36px;width:auto}
 .f-back{
-  color:var(--gray-light);font-size:0.85rem;text-decoration:none;
+  color:var(--gray);font-size:0.85rem;text-decoration:none;
   display:flex;align-items:center;gap:6px;transition:color .3s;
 }
 .f-back:hover{color:var(--gold)}
@@ -58,32 +56,33 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);-webki
 }
 .f-progress-dot{
   width:32px;height:32px;border-radius:50%;
-  background:var(--card);border:2px solid rgba(212,168,67,0.15);
+  background:var(--card);border:2px solid rgba(154,123,50,0.15);
   display:flex;align-items:center;justify-content:center;
   font-family:var(--font-display);font-size:0.75rem;font-weight:800;
   color:var(--gray);margin:0 auto 6px;transition:all .4s;
 }
 .f-progress-step.active .f-progress-dot{
-  background:var(--gold);border-color:var(--gold);color:var(--bg);
+  background:var(--gold);border-color:var(--gold);color:#fff;
 }
 .f-progress-step.done .f-progress-dot{
-  background:var(--gold);border-color:var(--gold);color:var(--bg);
+  background:var(--gold);border-color:var(--gold);color:#fff;
 }
 .f-progress-label{font-size:0.7rem;color:var(--gray);font-weight:500}
 .f-progress-step.active .f-progress-label{color:var(--gold-light)}
 .f-progress-line{
   flex:0 0 auto;width:60px;height:2px;
-  background:rgba(212,168,67,0.1);margin:0 -8px;margin-bottom:20px;
+  background:rgba(154,123,50,0.1);margin:0 -8px;margin-bottom:20px;
 }
 .f-progress-line.done{background:var(--gold)}
 
 /* ─── FORM CARD ─── */
 .f-card{
   background:var(--card);
-  border:1px solid rgba(212,168,67,0.1);
+  border:1px solid rgba(154,123,50,0.1);
   border-radius:1.5rem;
   padding:2.5rem;
   position:relative;
+  box-shadow:0 2px 16px rgba(0,0,0,0.04);
 }
 
 .f-card-title{
@@ -104,21 +103,21 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);-webki
 .f-service{
   display:flex;align-items:center;gap:0.8rem;
   padding:1rem 1.2rem;background:var(--input-bg);
-  border:1.5px solid rgba(212,168,67,0.06);border-radius:0.9rem;
+  border:1.5px solid rgba(154,123,50,0.06);border-radius:0.9rem;
   cursor:pointer;transition:all .3s;
 }
-.f-service:hover{border-color:rgba(212,168,67,0.2);background:var(--card-hover)}
-.f-service.sel{border-color:var(--gold);background:rgba(212,168,67,0.06)}
+.f-service:hover{border-color:rgba(154,123,50,0.2);background:var(--card-hover)}
+.f-service.sel{border-color:var(--gold);background:rgba(154,123,50,0.06)}
 
 .f-service-radio{
   width:18px;height:18px;border-radius:50%;
-  border:2px solid rgba(212,168,67,0.2);
+  border:2px solid rgba(154,123,50,0.2);
   display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
 .f-service.sel .f-service-radio{border-color:var(--gold)}
 .f-service.sel .f-service-radio::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--gold)}
 
-.f-service-icon{font-size:1.3rem;flex-shrink:0}
+.f-service-icon{font-size:1.3rem;flex-shrink:0;filter:grayscale(1) sepia(1) hue-rotate(-5deg) saturate(2) brightness(0.75)}
 .f-service-name{font-size:0.85rem;font-weight:600;color:var(--gray-light);line-height:1.3}
 .f-service.sel .f-service-name{color:var(--white)}
 
@@ -136,7 +135,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);-webki
 }
 .f-group input::placeholder,.f-group textarea::placeholder{color:rgba(138,134,128,0.5)}
 .f-group input:focus,.f-group select:focus,.f-group textarea:focus{
-  border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,168,67,0.1);
+  border-color:var(--gold);box-shadow:0 0 0 3px rgba(154,123,50,0.1);
 }
 .f-group select{
   appearance:none;
@@ -148,30 +147,30 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);-webki
 .f-budgets{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-bottom:1rem}
 .f-budget{
   padding:0.8rem 1rem;background:var(--input-bg);
-  border:1.5px solid rgba(212,168,67,0.06);border-radius:0.8rem;
+  border:1.5px solid rgba(154,123,50,0.06);border-radius:0.8rem;
   text-align:center;cursor:pointer;transition:all .3s;
   font-size:0.85rem;font-weight:600;color:var(--gray-light);
 }
-.f-budget:hover{border-color:rgba(212,168,67,0.2)}
-.f-budget.sel{border-color:var(--gold);color:var(--white);background:rgba(212,168,67,0.06)}
+.f-budget:hover{border-color:rgba(154,123,50,0.2)}
+.f-budget.sel{border-color:var(--gold);color:var(--white);background:rgba(154,123,50,0.06)}
 
 /* ─── BUTTONS ─── */
 .f-btn-row{display:flex;gap:0.8rem;margin-top:2rem}
 .f-btn-next{
   flex:1;display:flex;align-items:center;justify-content:center;gap:0.5rem;
   background:linear-gradient(135deg,var(--gold),var(--gold-dark));
-  color:var(--bg);padding:1rem 2rem;border-radius:3rem;
+  color:#fff;padding:1rem 2rem;border-radius:3rem;
   font-family:var(--font-display);font-weight:700;font-size:0.95rem;
   border:none;cursor:pointer;transition:transform .3s,box-shadow .3s;
-  box-shadow:0 4px 20px rgba(212,168,67,0.2);
+  box-shadow:0 4px 20px rgba(154,123,50,0.2);
 }
-.f-btn-next:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(212,168,67,0.35)}
+.f-btn-next:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(154,123,50,0.35)}
 .f-btn-back{
   display:flex;align-items:center;justify-content:center;gap:0.5rem;
   background:transparent;color:var(--gray-light);
   padding:1rem 1.5rem;border-radius:3rem;
   font-family:var(--font-body);font-weight:600;font-size:0.9rem;
-  border:1px solid rgba(212,168,67,0.15);cursor:pointer;transition:all .3s;
+  border:1px solid rgba(154,123,50,0.15);cursor:pointer;transition:all .3s;
 }
 .f-btn-back:hover{border-color:var(--gold);color:var(--gold)}
 
@@ -187,13 +186,13 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);-webki
 
 /* ─── SUMMARY ─── */
 .f-summary{
-  background:var(--input-bg);border:1px solid rgba(212,168,67,0.08);
+  background:var(--input-bg);border:1px solid rgba(154,123,50,0.08);
   border-radius:1rem;padding:1.5rem;margin-bottom:1.5rem;
 }
 .f-summary-row{
   display:flex;justify-content:space-between;align-items:center;
   padding:0.5rem 0;font-size:0.88rem;
-  border-bottom:1px solid rgba(212,168,67,0.05);
+  border-bottom:1px solid rgba(154,123,50,0.05);
 }
 .f-summary-row:last-child{border:none}
 .f-summary-row .lab{color:var(--gray)}
@@ -205,7 +204,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);-webki
   margin-top:2rem;
 }
 .f-trust-item{font-size:0.72rem;color:var(--gray);display:flex;align-items:center;gap:4px}
-.f-trust-item span{font-size:0.9rem}
+.f-trust-item span{font-size:0.9rem;filter:grayscale(1) sepia(1) hue-rotate(-5deg) saturate(2) brightness(0.75)}
 
 /* ─── FOOTER ─── */
 .f-footer{text-align:center;padding:2rem;max-width:680px;margin:0 auto}
@@ -214,7 +213,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);-webki
 
 /* ─── ERROR ─── */
 .f-error{
-  background:rgba(232,87,42,0.1);border:1px solid rgba(232,87,42,0.25);
+  background:rgba(154,123,50,0.1);border:1px solid rgba(154,123,50,0.25);
   border-radius:0.7rem;padding:0.8rem 1rem;margin-bottom:1rem;
   font-size:0.82rem;color:#ff7a4d;display:none;
 }
@@ -231,6 +230,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);-webki
   .f-progress-line{width:30px}
   .f-card-title{font-size:1.2rem}
   .f-header{padding:0.8rem 1.2rem}
+  .f-logo img{height:30px}
 }
 </style>
 </head>
@@ -238,7 +238,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);-webki
 
 <!-- HEADER -->
 <header class="f-header">
-  <div class="f-logo">Mercadeo <span>MRR</span></div>
+  <div class="f-logo"><img src="logo-mercadeo.png" alt="Mercadeo MRR"></div>
   <a href="https://zambranokrystina-ui.github.io/mercadeomrr/" class="f-back">← Volver</a>
 </header>
 
