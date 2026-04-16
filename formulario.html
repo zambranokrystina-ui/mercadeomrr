@@ -546,13 +546,16 @@ function sendToWhatsApp() {
     text += `\n¿Podemos agendar una llamada? ¡Gracias!`;
 
     const encoded = encodeURIComponent(text);
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
 
     btn.innerHTML = '✅ ¡Listo! Abriendo WhatsApp...';
     setTimeout(() => {
-      window.open(url, '_blank');
-      btn.innerHTML = originalText;
-      btn.disabled = false;
+      // Redirige a WhatsApp (compatible con iframes)
+      var waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
+      try {
+        window.top.location.href = waUrl;
+      } catch(e) {
+        window.location.href = waUrl;
+      }
     }, 800);
   });
 }
