@@ -3,562 +3,2032 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agenda tu Consulta — Mercadeo MRR LLC</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Mercadeo MRR LLC — Tu Ecosistema Digital Completo</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#EDEBE6;
-  --card:#ffffff;
-  --card-hover:#f5f3ee;
-  --gold:#9A7B32;
-  --gold-light:#7a6228;
-  --gold-dark:#605343;
-  --white:#2a2518;
-  --gray:#7a7368;
-  --gray-light:#605343;
-  --input-bg:#f8f6f1;
-  --input-border:rgba(154,123,50,0.18);
-  --green:#25d366;
-  --font-display:'Poppins',sans-serif;
-  --font-serif:'Playfair Display',serif;
-  --font-body:'DM Sans',sans-serif;
-}
-html{scroll-behavior:auto}
-body{background:var(--bg);color:var(--white);font-family:var(--font-body);-webkit-font-smoothing:antialiased;min-height:100vh}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
-/* ─── HEADER ─── */
-.f-header{
-  background:rgba(237,235,230,0.95);
-  border-bottom:1px solid rgba(154,123,50,0.1);
-  padding:1rem 2rem;
-  display:flex;align-items:center;justify-content:space-between;
-}
-.f-logo img{height:36px;width:auto}
-.f-back{
-  color:var(--gray);font-size:0.85rem;text-decoration:none;
-  display:flex;align-items:center;gap:6px;transition:color .3s;
-}
-.f-back:hover{color:var(--gold)}
-
-/* ─── LAYOUT ─── */
-.f-wrapper{
-  max-width:680px;margin:0 auto;
-  padding:3rem 2rem 4rem;
+:root {
+  --bg: #EDEBE6;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f5f3ee;
+  --gold: #9A7B32;
+  --gold-light: #7a6228;
+  --gold-dark: #605343;
+  --white: #2a2518;
+  --gray: #7a7368;
+  --gray-light: #605343;
+  --accent: #58592F;
+  --brown: #605343;
+  --base: #D9D6CF;
+  --font-display: 'Poppins', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-body: 'DM Sans', sans-serif;
 }
 
-/* ─── PROGRESS ─── */
-.f-progress{
-  display:flex;align-items:center;gap:0;margin-bottom:2.5rem;
-}
-.f-progress-step{
-  flex:1;text-align:center;position:relative;
-}
-.f-progress-dot{
-  width:32px;height:32px;border-radius:50%;
-  background:var(--card);border:2px solid rgba(154,123,50,0.15);
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-display);font-size:0.75rem;font-weight:800;
-  color:var(--gray);margin:0 auto 6px;transition:all .4s;
-}
-.f-progress-step.active .f-progress-dot{
-  background:var(--gold);border-color:var(--gold);color:#fff;
-}
-.f-progress-step.done .f-progress-dot{
-  background:var(--gold);border-color:var(--gold);color:#fff;
-}
-.f-progress-label{font-size:0.7rem;color:var(--gray);font-weight:500}
-.f-progress-step.active .f-progress-label{color:var(--gold-light)}
-.f-progress-line{
-  flex:0 0 auto;width:60px;height:2px;
-  background:rgba(154,123,50,0.1);margin:0 -8px;margin-bottom:20px;
-}
-.f-progress-line.done{background:var(--gold)}
+html { scroll-behavior: auto; }
 
-/* ─── FORM CARD ─── */
-.f-card{
-  background:var(--card);
-  border:1px solid rgba(154,123,50,0.1);
-  border-radius:1.5rem;
-  padding:2.5rem;
-  position:relative;
-  box-shadow:0 2px 16px rgba(0,0,0,0.04);
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-.f-card-title{
-  font-family:var(--font-display);font-size:1.4rem;font-weight:800;
-  margin-bottom:0.3rem;
-}
-.f-card-title em{
-  font-family:var(--font-serif);font-style:italic;color:var(--gold);font-weight:400;
-}
-.f-card-sub{font-size:0.88rem;color:var(--gray);margin-bottom:2rem;line-height:1.5}
-
-/* ─── STEP PANELS ─── */
-.f-step{display:none}
-.f-step.active{display:block}
-
-/* ─── SERVICE SELECTOR ─── */
-.f-services{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem}
-.f-service{
-  display:flex;align-items:center;gap:0.8rem;
-  padding:1rem 1.2rem;background:var(--input-bg);
-  border:1.5px solid rgba(154,123,50,0.06);border-radius:0.9rem;
-  cursor:pointer;transition:all .3s;
-}
-.f-service:hover{border-color:rgba(154,123,50,0.2);background:var(--card-hover)}
-.f-service.sel{border-color:var(--gold);background:rgba(154,123,50,0.06)}
-
-.f-service-radio{
-  width:18px;height:18px;border-radius:50%;
-  border:2px solid rgba(154,123,50,0.2);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-}
-.f-service.sel .f-service-radio{border-color:var(--gold)}
-.f-service.sel .f-service-radio::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--gold)}
-
-.f-service-icon{font-size:1.3rem;flex-shrink:0;filter:grayscale(1) sepia(1) hue-rotate(-5deg) saturate(2) brightness(0.75)}
-.f-service-name{font-size:0.85rem;font-weight:600;color:var(--gray-light);line-height:1.3}
-.f-service.sel .f-service-name{color:var(--white)}
-
-/* ─── FORM FIELDS ─── */
-.f-row{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-bottom:0.8rem}
-.f-row.full{grid-template-columns:1fr}
-.f-group{display:flex;flex-direction:column;gap:0.35rem}
-.f-group label{font-size:0.78rem;font-weight:600;color:var(--gray-light);letter-spacing:0.02em}
-.f-group input,.f-group select,.f-group textarea{
-  background:var(--input-bg);border:1px solid var(--input-border);
-  border-radius:0.7rem;padding:0.85rem 1rem;font-size:0.9rem;
-  color:var(--white);font-family:var(--font-body);
-  transition:border-color .3s,box-shadow .3s;outline:none;width:100%;
-  resize:none;
-}
-.f-group input::placeholder,.f-group textarea::placeholder{color:rgba(138,134,128,0.5)}
-.f-group input:focus,.f-group select:focus,.f-group textarea:focus{
-  border-color:var(--gold);box-shadow:0 0 0 3px rgba(154,123,50,0.1);
-}
-.f-group select{
-  appearance:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23d4a843' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;
+/* ─── NOISE OVERLAY ─── */
+body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: -1;
 }
 
-/* ─── BUDGET OPTIONS ─── */
-.f-budgets{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-bottom:1rem}
-.f-budget{
-  padding:0.8rem 1rem;background:var(--input-bg);
-  border:1.5px solid rgba(154,123,50,0.06);border-radius:0.8rem;
-  text-align:center;cursor:pointer;transition:all .3s;
-  font-size:0.85rem;font-weight:600;color:var(--gray-light);
-}
-.f-budget:hover{border-color:rgba(154,123,50,0.2)}
-.f-budget.sel{border-color:var(--gold);color:var(--white);background:rgba(154,123,50,0.06)}
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
 
-/* ─── BUTTONS ─── */
-.f-btn-row{display:flex;gap:0.8rem;margin-top:2rem}
-.f-btn-next{
-  flex:1;display:flex;align-items:center;justify-content:center;gap:0.5rem;
-  background:linear-gradient(135deg,var(--gold),var(--gold-dark));
-  color:#fff;padding:1rem 2rem;border-radius:3rem;
-  font-family:var(--font-display);font-weight:700;font-size:0.95rem;
-  border:none;cursor:pointer;transition:transform .3s,box-shadow .3s;
-  box-shadow:0 4px 20px rgba(154,123,50,0.2);
+/* ─── NAVIGATION ─── */
+nav {
+  position: relative;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1.2rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(237,235,230,0.98);
+  border-bottom: 1px solid rgba(154,123,50,0.1);
+  transition: all 0.4s;
 }
-.f-btn-next:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(154,123,50,0.35)}
-.f-btn-back{
-  display:flex;align-items:center;justify-content:center;gap:0.5rem;
-  background:transparent;color:var(--gray-light);
-  padding:1rem 1.5rem;border-radius:3rem;
-  font-family:var(--font-body);font-weight:600;font-size:0.9rem;
-  border:1px solid rgba(154,123,50,0.15);cursor:pointer;transition:all .3s;
-}
-.f-btn-back:hover{border-color:var(--gold);color:var(--gold)}
 
-.f-btn-whatsapp{
-  flex:1;display:flex;align-items:center;justify-content:center;gap:0.6rem;
-  background:var(--green);color:#fff;
-  padding:1.1rem 2rem;border-radius:3rem;
-  font-family:var(--font-display);font-weight:700;font-size:1rem;
-  border:none;cursor:pointer;transition:transform .3s,box-shadow .3s;
-  box-shadow:0 4px 20px rgba(37,211,102,0.25);
+.logo {
+  display: flex;
+  align-items: center;
 }
-.f-btn-whatsapp:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(37,211,102,0.4)}
 
-/* ─── SUMMARY ─── */
-.f-summary{
-  background:var(--input-bg);border:1px solid rgba(154,123,50,0.08);
-  border-radius:1rem;padding:1.5rem;margin-bottom:1.5rem;
+.logo-img {
+  height: 40px;
+  width: auto;
 }
-.f-summary-row{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:0.5rem 0;font-size:0.88rem;
-  border-bottom:1px solid rgba(154,123,50,0.05);
-}
-.f-summary-row:last-child{border:none}
-.f-summary-row .lab{color:var(--gray)}
-.f-summary-row .val{color:var(--white);font-weight:600}
 
-/* ─── TRUST ─── */
-.f-trust{
-  display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;
-  margin-top:2rem;
+.nav-links { display: flex; gap: 1.5rem; align-items: center; }
+
+.nav-links > a,
+.nav-dropdown > a {
+  color: var(--gray-light);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  transition: color 0.3s;
+  cursor: pointer;
 }
-.f-trust-item{font-size:0.72rem;color:var(--gray);display:flex;align-items:center;gap:4px}
-.f-trust-item span{font-size:0.9rem;filter:grayscale(1) sepia(1) hue-rotate(-5deg) saturate(2) brightness(0.75)}
+
+.nav-links > a small,
+.nav-dropdown > a small {
+  font-size: 0.65rem;
+  opacity: 0.6;
+}
+
+.nav-links > a:hover,
+.nav-dropdown > a:hover { color: var(--gold); }
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--bg-card);
+  border: 1px solid rgba(154,123,50,0.12);
+  border-radius: 0.8rem;
+  padding: 0.5rem 0;
+  min-width: 180px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  z-index: 100;
+  margin-top: 0.5rem;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu {
+  display: block;
+}
+
+.nav-dropdown-menu a {
+  display: block;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.82rem;
+  color: var(--gray-light);
+  text-decoration: none;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.nav-dropdown-menu a:hover {
+  background: rgba(154,123,50,0.06);
+  color: var(--gold);
+}
+
+.nav-cta {
+  background: var(--gold) !important;
+  color: #fff !important;
+  padding: 0.6rem 1.5rem;
+  border-radius: 2rem;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  transition: transform 0.3s, box-shadow 0.3s !important;
+}
+
+.nav-cta:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 0 30px rgba(154,123,50,0.3);
+}
+
+/* Mobile menu toggle */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 5px;
+}
+
+.menu-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  transition: 0.3s;
+}
+
+/* ─── HERO ─── */
+.hero {
+  min-height: auto;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 4rem 3rem 4rem;
+  overflow: hidden;
+}
+
+.hero-bg-glow {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  filter: blur(180px);
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.hero-bg-glow.g1 {
+  background: var(--gold);
+  top: -200px;
+  right: -100px;
+}
+
+.hero-bg-glow.g2 {
+  background: var(--accent);
+  bottom: -300px;
+  left: -200px;
+  opacity: 0.08;
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(154,123,50,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(154,123,50,0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(154,123,50,0.1);
+  border: 1px solid rgba(154,123,50,0.2);
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 0.8s ease both;
+}
+
+.hero-tag .dot {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.5); }
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4.8rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 0.8s ease 0.1s both;
+}
+
+.hero h1 em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.hero-desc {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--gray-light);
+  max-width: 520px;
+  margin-bottom: 2.5rem;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.8s ease 0.3s both;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--bg);
+  padding: 1rem 2.2rem;
+  border-radius: 3rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(154,123,50,0.35);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--white);
+  padding: 1rem 2.2rem;
+  border-radius: 3rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  border: 1px solid rgba(245,240,232,0.2);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(154,123,50,0.1);
+}
+
+/* Hero visual */
+.hero-visual {
+  position: relative;
+  animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+.hero-photo-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.hero-photo {
+  width: 320px;
+  height: 400px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 1.5rem;
+  border: 3px solid rgba(154,123,50,0.2);
+  box-shadow: 0 20px 60px rgba(96,83,67,0.15);
+  position: relative;
+  z-index: 2;
+}
+
+.hero-photo-glow {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 100px;
+  background: radial-gradient(ellipse, rgba(154,123,50,0.08), transparent 70%);
+  filter: blur(20px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-card {
+  background: #ffffff;
+  border: 1px solid rgba(154,123,50,0.12);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(96,83,67,0.08);
+}
+
+.hero-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 180deg, transparent, rgba(154,123,50,0.1), transparent 30%);
+  animation: cardSpin 8s linear infinite;
+}
+
+@keyframes cardSpin { to { transform: rotate(360deg); } }
+
+.hero-card-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(154,123,50,0.04);
+  border-radius: 1rem;
+  border: 1px solid rgba(154,123,50,0.1);
+  overflow: hidden;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+.hero-testimonial-carousel {
+  margin-top: 1.5rem;
+  padding: 1.2rem;
+  background: rgba(255,255,255,0.6);
+  border-radius: 1rem;
+  border: 1px solid rgba(154,123,50,0.1);
+  position: relative;
+  overflow: hidden;
+  min-height: 130px;
+}
+
+.carousel-track {
+  position: relative;
+}
+
+.carousel-slide {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  position: relative;
+  pointer-events: auto;
+}
+
+.carousel-slide .stars {
+  color: var(--gold);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.carousel-slide p {
+  font-size: 0.85rem;
+  color: var(--gray-light);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.carousel-slide .author {
+  font-size: 0.75rem;
+  color: var(--gold);
+  font-style: normal;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 0.8rem;
+}
+
+.carousel-dots .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(154,123,50,0.2);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.carousel-dots .dot.active {
+  background: var(--gold);
+  transform: scale(1.2);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── MARQUEE ─── */
+.marquee-section {
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(154,123,50,0.1);
+  border-bottom: 1px solid rgba(154,123,50,0.1);
+  overflow: hidden;
+  background: rgba(154,123,50,0.04);
+}
+
+.marquee-track {
+  display: flex;
+  animation: marquee 25s linear infinite;
+  width: max-content;
+}
+
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0 2rem;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.marquee-item .sep {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* ─── SECTION COMMON ─── */
+section {
+  padding: 6rem 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.section-label::before {
+  content: '';
+  width: 30px;
+  height: 1.5px;
+  background: var(--gold);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.section-title em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.section-desc {
+  font-size: 1.05rem;
+  color: var(--gray);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+}
+
+/* ─── SERVICES ─── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.service-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(154,123,50,0.1);
+  border-radius: 1.2rem;
+  padding: 2rem;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--white);
+  display: block;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.service-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(154,123,50,0.2);
+  transform: translateY(-4px);
+}
+
+.service-card:hover::before { opacity: 1; }
+
+.service-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, rgba(154,123,50,0.08), rgba(154,123,50,0.1));
+  border-radius: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid rgba(154,123,50,0.1);
+  filter: grayscale(1) sepia(1) hue-rotate(-5deg) saturate(2) brightness(0.75);
+}
+
+.service-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.service-card p {
+  font-size: 0.9rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+/* ─── DIA CLUB FEATURE ─── */
+.dia-club {
+  padding: 6rem 3rem;
+}
+
+.dia-club-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  background: linear-gradient(145deg, rgba(88,89,47,0.05), rgba(154,123,50,0.1));
+  border: 1px solid rgba(154,123,50,0.12);
+  border-radius: 2rem;
+  padding: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.dia-club-inner::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(88,89,47,0.1), transparent 70%);
+  pointer-events: none;
+}
+
+.dia-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(88,89,47,0.06);
+  border: 1px solid rgba(88,89,47,0.3);
+  color: var(--accent);
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.dia-club h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 1.2rem;
+}
+
+.dia-club h2 span {
+  background: linear-gradient(135deg, var(--accent), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dia-club .desc {
+  font-size: 1.05rem;
+  color: var(--gray-light);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.dia-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.dia-feature {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.95rem;
+  color: var(--white);
+}
+
+.dia-feature .check {
+  width: 24px;
+  height: 24px;
+  background: rgba(154,123,50,0.08);
+  border: 1px solid rgba(154,123,50,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+/* DIA visual */
+.dia-visual {
+  position: relative;
+  z-index: 2;
+}
+
+.dia-price-card {
+  background: rgba(255,255,255,0.8);
+  border: 1px solid rgba(154,123,50,0.08);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.dia-price-card .course-label {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 0.5rem;
+}
+
+.dia-price-card .course-name {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+}
+
+.dia-modules {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.dia-module {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.7rem 1rem;
+  background: rgba(154,123,50,0.1);
+  border-radius: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--gray-light);
+  border: 1px solid rgba(154,123,50,0.12);
+}
+
+.dia-module .num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.75rem;
+  color: var(--gold);
+  width: 24px;
+  height: 24px;
+  background: rgba(154,123,50,0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dia-price-card .btn-primary {
+  width: 100%;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--accent), var(--gold-dark));
+}
+
+/* ─── MENTES ABUNDANTES ─── */
+.mentes {
+  text-align: center;
+  position: relative;
+}
+
+.mentes-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(154,123,50,0.12), transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.mentes .section-desc {
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.mentes-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.mentes-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(154,123,50,0.08);
+  border-radius: 1.2rem;
+  padding: 2.5rem 2rem;
+  transition: all 0.4s;
+  text-align: center;
+}
+
+.mentes-card:hover {
+  border-color: rgba(154,123,50,0.2);
+  transform: translateY(-4px);
+}
+
+.mentes-card .icon {
+  font-size: 2.2rem;
+  margin-bottom: 1.2rem;
+  filter: grayscale(1) sepia(1) hue-rotate(-5deg) saturate(2) brightness(0.75);
+}
+
+.mentes-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.mentes-card p {
+  font-size: 0.88rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+/* ─── PROCESS ─── */
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  counter-reset: step;
+}
+
+.step {
+  position: relative;
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 1px solid rgba(154,123,50,0.08);
+  border-radius: 1.2rem;
+  counter-increment: step;
+  transition: all 0.4s;
+}
+
+.step:hover {
+  border-color: rgba(154,123,50,0.2);
+  transform: translateY(-4px);
+}
+
+.step::before {
+  content: counter(step, decimal-leading-zero);
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  color: rgba(154,123,50,0.1);
+  line-height: 1;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.step h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.step p {
+  font-size: 0.85rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+/* ─── CTA ─── */
+.cta-section {
+  text-align: center;
+  padding: 8rem 3rem;
+  position: relative;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(154,123,50,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.cta-section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.cta-section h2 em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.cta-section p {
+  font-size: 1.1rem;
+  color: var(--gray);
+  margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.cta-section .btn-primary {
+  font-size: 1.1rem;
+  padding: 1.2rem 3rem;
+  position: relative;
+  z-index: 2;
+}
 
 /* ─── FOOTER ─── */
-.f-footer{text-align:center;padding:2rem;max-width:680px;margin:0 auto}
-.f-footer p{font-size:0.72rem;color:var(--gray)}
-.f-footer a{color:var(--gold);text-decoration:none;font-weight:600}
-
-/* ─── ERROR ─── */
-.f-error{
-  background:rgba(154,123,50,0.1);border:1px solid rgba(154,123,50,0.25);
-  border-radius:0.7rem;padding:0.8rem 1rem;margin-bottom:1rem;
-  font-size:0.82rem;color:#ff7a4d;display:none;
+footer {
+  border-top: 1px solid rgba(154,123,50,0.1);
+  padding: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
-.f-error.show{display:block}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-brand .logo {
+  margin-bottom: 0.5rem;
+}
+
+.footer-brand p {
+  font-size: 0.8rem;
+  color: var(--gray);
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-links a {
+  color: var(--gray);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover { color: var(--gold); }
+
+.footer-social {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.footer-social a {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(154,123,50,0.08);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+}
+
+.footer-social a:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(154,123,50,0.1);
+}
+
+/* ─── WAITLIST ─── */
+.waitlist-box{
+  max-width:520px;
+  margin:0 auto;
+  background:linear-gradient(145deg,rgba(154,123,50,0.12),rgba(255,255,255,0.9));
+  border:1px solid rgba(154,123,50,0.18);
+  border-radius:1.5rem;
+  padding:2.5rem;
+  text-align:center;
+}
+
+.waitlist-badge{
+  display:inline-block;
+  background:rgba(154,123,50,0.12);
+  border:1px solid rgba(154,123,50,0.25);
+  color:var(--gold-light);
+  font-size:0.75rem;
+  font-weight:700;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  padding:0.35rem 1rem;
+  border-radius:2rem;
+  margin-bottom:1.2rem;
+}
+
+.waitlist-title{
+  font-family:var(--font-display);
+  font-size:1.3rem;
+  font-weight:800;
+  margin-bottom:0.6rem;
+}
+
+.waitlist-desc{
+  font-size:0.9rem;
+  color:var(--gray-light);
+  line-height:1.6;
+  margin-bottom:1.5rem;
+}
+
+.waitlist-plans{
+  display:flex;
+  flex-direction:column;
+  gap:0.5rem;
+  margin-bottom:1.5rem;
+}
+
+.waitlist-plan{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(255,255,255,0.5);
+  border:1px solid rgba(154,123,50,0.12);
+  border-radius:0.7rem;
+  padding:0.8rem 1rem;
+}
+
+.waitlist-plan-name{
+  font-size:0.85rem;
+  color:var(--gray-light);
+}
+
+.waitlist-plan-price{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:0.85rem;
+  color:var(--gold);
+}
+
+.waitlist-note{
+  font-size:0.78rem;
+  color:var(--gray);
+  margin-top:1rem;
+}
+
+/* ─── MENTORS ─── */
+.mentes-mentors {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.mentor-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(154,123,50,0.08);
+  border-radius: 1.2rem;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.4s;
+}
+
+.mentor-card:hover {
+  border-color: rgba(154,123,50,0.2);
+  transform: translateY(-4px);
+}
+
+.mentor-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  border: 2px solid rgba(154,123,50,0.2);
+  overflow: hidden;
+}
+
+.mentor-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.mentor-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.mentor-role {
+  font-size: 0.8rem;
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.8rem;
+}
+
+.mentor-card > p:last-child {
+  font-size: 0.88rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+/* ─── MENTES MODULES ─── */
+.mentes-modules {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 3rem;
+}
+
+.mentes-module-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(154,123,50,0.08);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.4s;
+}
+
+.mentes-module-card:hover {
+  border-color: rgba(154,123,50,0.2);
+}
+
+.mod-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: var(--gold);
+  background: rgba(154,123,50,0.1);
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.4rem;
+  display: inline-block;
+  margin-bottom: 0.8rem;
+}
+
+.mentes-module-card h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.mentes-module-card p {
+  font-size: 0.85rem;
+  color: var(--gray);
+  line-height: 1.5;
+}
+
+/* ─── MENTES PRICE ─── */
+.mentes-price-row {
+  display: flex;
+  justify-content: center;
+}
+
+.mentes-price-card-main {
+  background: linear-gradient(145deg, rgba(154,123,50,0.08), rgba(255,255,255,0.9));
+  border: 1px solid rgba(154,123,50,0.2);
+  border-radius: 1.5rem;
+  padding: 3rem;
+  text-align: center;
+  max-width: 420px;
+  width: 100%;
+}
+
+.price-badge-top {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.big-price {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+
+.big-price span {
+  font-size: 1rem;
+  color: var(--gray);
+  font-weight: 400;
+}
+
+.price-includes {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.price-includes li {
+  font-size: 0.9rem;
+  color: var(--gray-light);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(154,123,50,0.12);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.price-includes li::before {
+  content: '✓';
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* ─── PRICING CARDS (MEMBERSHIP) ─── */
+.pricing-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.pricing-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(154,123,50,0.08);
+  border-radius: 1.5rem;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  position: relative;
+  transition: all 0.4s;
+}
+
+.pricing-card:hover {
+  border-color: rgba(154,123,50,0.08);
+  transform: translateY(-4px);
+}
+
+.pricing-card.featured {
+  border-color: rgba(154,123,50,0.3);
+  background: linear-gradient(145deg, rgba(154,123,50,0.08), var(--bg-card));
+}
+
+.pricing-popular {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--bg);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.35rem 1.2rem;
+  border-radius: 2rem;
+  white-space: nowrap;
+}
+
+.pricing-label {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.pricing-amount {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.pricing-amount span {
+  font-size: 0.9rem;
+  color: var(--gray);
+  font-weight: 400;
+}
+
+.pricing-save {
+  font-size: 0.8rem;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+
+.pricing-list {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.pricing-list li {
+  font-size: 0.85rem;
+  color: var(--gray-light);
+  padding: 0.45rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pricing-list li::before {
+  content: '✓';
+  color: var(--gold);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* ─── ASESORÍA ─── */
+.asesoria-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.asesoria-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.asesoria-price-card {
+  background: linear-gradient(145deg, rgba(154,123,50,0.08), rgba(255,255,255,0.9));
+  border: 1px solid rgba(154,123,50,0.08);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.asesoria-icon-big {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  filter: grayscale(1) sepia(1) hue-rotate(-5deg) saturate(2) brightness(0.75);
+}
+
+.asesoria-price-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.asesoria-price {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.asesoria-price span {
+  font-size: 1rem;
+  color: var(--gray);
+  font-weight: 400;
+}
+
+.asesoria-detail {
+  font-size: 0.88rem;
+  color: var(--gray);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* ─── FREE CALL BANNER ─── */
+.free-call-banner {
+  padding: 0 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.free-call-inner {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: linear-gradient(135deg, rgba(154,123,50,0.1), rgba(88,89,47,0.05));
+  border: 1px solid rgba(154,123,50,0.2);
+  border-radius: 1.5rem;
+  padding: 2.5rem 3rem;
+}
+
+.free-call-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+  filter: grayscale(1) sepia(1) hue-rotate(-5deg) saturate(2) brightness(0.75);
+}
+
+.free-call-text {
+  flex: 1;
+}
+
+.free-call-text h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.free-call-text p {
+  font-size: 0.9rem;
+  color: var(--gray);
+  line-height: 1.5;
+}
 
 /* ─── RESPONSIVE ─── */
-@media(max-width:600px){
-  .f-wrapper{padding:2rem 1.2rem 3rem}
-  .f-card{padding:1.5rem}
-  .f-services{grid-template-columns:1fr}
-  .f-budgets{grid-template-columns:1fr 1fr}
-  .f-row{grid-template-columns:1fr}
-  .f-btn-row{flex-direction:column}
-  .f-progress-line{width:30px}
-  .f-card-title{font-size:1.2rem}
-  .f-header{padding:0.8rem 1.2rem}
-  .f-logo img{height:30px}
+@media (max-width: 1024px) {
+  .hero-content { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hero-visual { max-width: 500px; }
+  .dia-club-inner { grid-template-columns: 1fr; }
+  .mentes-features { grid-template-columns: 1fr 1fr; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .asesoria-inner { grid-template-columns: 1fr; }
+  .mentes-mentors { grid-template-columns: 1fr 1fr; }
+  .pricing-cards { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 0.8rem 1.2rem; }
+  .nav-links { 
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(237,235,230,0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 0.8rem;
+    border-bottom: 1px solid rgba(154,123,50,0.1);
+  }
+  .nav-links.active { display: flex; }
+  .menu-toggle { display: flex; }
+  
+  .nav-dropdown-menu {
+    position: static;
+    display: block;
+    box-shadow: none;
+    border: none;
+    padding: 0 0 0 1rem;
+    margin: 0.3rem 0 0;
+    min-width: auto;
+    background: transparent;
+  }
+  .nav-dropdown-menu a { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
+  .logo-img { height: 32px; }
+  
+  .hero { padding: 2rem 1.2rem 2rem; }
+  .hero-content { gap: 2rem; }
+  .hero-tag { font-size: 0.65rem; padding: 0.35rem 0.8rem; margin-bottom: 1rem; }
+  .hero h1 { font-size: 1.8rem; margin-bottom: 1rem; }
+  .hero-desc { font-size: 0.95rem; margin-bottom: 1.5rem; }
+  .hero-buttons { flex-direction: column; gap: 0.8rem; }
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-secondary { width: 100%; text-align: center; justify-content: center; padding: 0.9rem 1.5rem; font-size: 0.9rem; }
+  
+  .hero-photo { width: 220px; height: 280px; border-radius: 1.2rem; }
+  .hero-card { padding: 1.5rem; }
+  .stat-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  .stat-number { font-size: 1.6rem; }
+  .stat-label { font-size: 0.65rem; }
+  .carousel-slide p { font-size: 0.8rem; }
+  
+  section { padding: 3rem 1.2rem; }
+  .dia-club { padding: 3rem 1.2rem; }
+  .dia-club-inner { padding: 1.5rem; }
+  .free-call-banner { padding: 0 1.2rem; }
+  .free-call-inner { flex-direction: column; text-align: center; padding: 1.5rem; }
+  
+  .section-title { font-size: 1.5rem; }
+  .section-desc { font-size: 0.9rem; }
+  
+  .services-grid { grid-template-columns: 1fr; }
+  .mentes-features { grid-template-columns: 1fr; }
+  .mentes-mentors { grid-template-columns: 1fr; }
+  .pricing-cards { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr; }
+  .asesoria-inner { grid-template-columns: 1fr; }
+  .mentes-modules { grid-template-columns: 1fr; }
+  
+  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+  
+  .cta-section { padding: 4rem 1.2rem; }
+  .cta-section h2 { font-size: 1.6rem; }
+  
+  .dia-club h2 { font-size: 1.6rem; }
+  .dia-price-card { padding: 1.5rem; }
+  
+  .btn-primary { padding: 0.9rem 1.8rem; font-size: 0.9rem; }
+  .btn-secondary { padding: 0.9rem 1.8rem; font-size: 0.9rem; }
+}
+
+/* ─── ANIMATIONS ON SCROLL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="f-header">
-  <div class="f-logo"><img src="logo-mercadeo.png" alt="Mercadeo MRR"></div>
-  <a href="https://zambranokrystina-ui.github.io/mercadeomrr/" class="f-back">← Volver</a>
-</header>
-
-<!-- FORM -->
-<div class="f-wrapper">
-
-  <!-- PROGRESS -->
-  <div class="f-progress">
-    <div class="f-progress-step active" id="prog1">
-      <div class="f-progress-dot">1</div>
-      <div class="f-progress-label">Servicio</div>
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <img src="logo-mercadeo.png" alt="Mercadeo MRR" class="logo-img">
+  </div>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links">
+    <div class="nav-dropdown">
+      <a href="#servicios">Servicios <small>▾</small></a>
+      <div class="nav-dropdown-menu">
+        <a href="#asesoria">Asesoría Digital</a>
+        <a href="https://www.mercadeomrr.com/formulario" target="_top">Cotización</a>
+      </div>
     </div>
-    <div class="f-progress-line" id="line1"></div>
-    <div class="f-progress-step" id="prog2">
-      <div class="f-progress-dot">2</div>
-      <div class="f-progress-label">Tus Datos</div>
+    <div class="nav-dropdown">
+      <a href="#mentes">Mentes Abundantes <small>▾</small></a>
+      <div class="nav-dropdown-menu">
+        <a href="#membresia">Membresía</a>
+      </div>
     </div>
-    <div class="f-progress-line" id="line2"></div>
-    <div class="f-progress-step" id="prog3">
-      <div class="f-progress-dot">3</div>
-      <div class="f-progress-label">Confirmar</div>
+    <a href="#dia-club">DIA Club</a>
+    <a class="nav-cta" href="https://www.mercadeomrr.com/llamadaclaridad" target="_blank">Llamada Gratis</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-glow g1"></div>
+  <div class="hero-bg-glow g2"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-tag"><span class="dot"></span> Marketing Digital que Transforma</div>
+      <h1>Construimos tu <em>imperio digital</em> desde cero</h1>
+      <p class="hero-desc">Edición de video profesional, ecosistemas digitales, marca personal y estrategias de marketing que convierten seguidores en clientes reales.</p>
+      <div class="hero-buttons">
+        <a href="https://www.mercadeomrr.com/formulario" class="btn-primary" target="_blank">Empieza Ahora →</a>
+        <a href="https://www.mercadeomrr.com/dia-club" class="btn-secondary" target="_blank">Conoce DIA Club</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-photo-wrapper">
+        <img src="krystina.png" alt="Krystina Zambrano — Mercadeo MRR" class="hero-photo">
+        <div class="hero-photo-glow"></div>
+      </div>
+      <div class="hero-card" style="margin-top:1.5rem;">
+        <div class="hero-card-inner">
+          <div class="stat-grid">
+            <div class="stat-item">
+              <div class="stat-number">300+</div>
+              <div class="stat-label">Videos Editados</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">200+</div>
+              <div class="stat-label">Clientes Felices</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">4+</div>
+              <div class="stat-label">Cursos Creados</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">10M+</div>
+              <div class="stat-label">Vistas Generadas</div>
+            </div>
+          </div>
+          <div class="hero-testimonial-carousel">
+            <div class="carousel-track" id="carouselTrack">
+              <div class="carousel-slide active">
+                <div class="stars">★★★★★</div>
+                <p>"Krystina Zambrano transformó por completo mi presencia digital. Mis reels ahora generan ventas reales."</p>
+                <div class="author">— Cliente Satisfecha</div>
+              </div>
+              <div class="carousel-slide">
+                <div class="stars">★★★★★</div>
+                <p>"Gracias por guiarme y ser esa luz que alumbra el camino. Ustedes fueron mi brújula."</p>
+                <div class="author">— Misladys R.</div>
+              </div>
+              <div class="carousel-slide">
+                <div class="stars">★★★★★</div>
+                <p>"Me acompañaron a redescubrir mis valores y crear un nuevo concepto de lo que significa ser emprendedora."</p>
+                <div class="author">— Paola</div>
+              </div>
+              <div class="carousel-slide">
+                <div class="stars">★★★★★</div>
+                <p>"Pude crear un negocio desde cero. Lo que antes era solo un hobby, hoy genera ventas reales."</p>
+                <div class="author">— Susana M.</div>
+              </div>
+            </div>
+            <div class="carousel-dots" id="carouselDots">
+              <span class="dot active" onclick="goSlide(0)"></span>
+              <span class="dot" onclick="goSlide(1)"></span>
+              <span class="dot" onclick="goSlide(2)"></span>
+              <span class="dot" onclick="goSlide(3)"></span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <div class="f-card">
-    <div class="f-error" id="errorMsg"></div>
-
-    <!-- ═══ STEP 1: SERVICE ═══ -->
-    <div class="f-step active" id="step1">
-      <div class="f-card-title">¿En qué te podemos <em>ayudar?</em></div>
-      <p class="f-card-sub">Selecciona el servicio que te interesa. Si no estás seguro/a, no te preocupes — te orientamos en la llamada.</p>
-
-      <div class="f-services">
-        <div class="f-service" data-service="Edición de Video Profesional">
-          <div class="f-service-radio"></div>
-          <div class="f-service-icon">🎬</div>
-          <div class="f-service-name">Edición de Video / Reels</div>
-        </div>
-        <div class="f-service" data-service="Creación de Cursos">
-          <div class="f-service-radio"></div>
-          <div class="f-service-icon">📚</div>
-          <div class="f-service-name">Creación de Cursos</div>
-        </div>
-        <div class="f-service" data-service="Ecosistemas Digitales">
-          <div class="f-service-radio"></div>
-          <div class="f-service-icon">🌐</div>
-          <div class="f-service-name">Ecosistemas Digitales</div>
-        </div>
-        <div class="f-service" data-service="Landing Pages y Páginas Web">
-          <div class="f-service-radio"></div>
-          <div class="f-service-icon">🎯</div>
-          <div class="f-service-name">Landing Pages / Web</div>
-        </div>
-        <div class="f-service" data-service="Guionización de Videos">
-          <div class="f-service-radio"></div>
-          <div class="f-service-icon">✍️</div>
-          <div class="f-service-name">Guionización de Videos</div>
-        </div>
-        <div class="f-service" data-service="Marca Personal">
-          <div class="f-service-radio"></div>
-          <div class="f-service-icon">👤</div>
-          <div class="f-service-name">Marca Personal</div>
-        </div>
-        <div class="f-service" data-service="Marketing Digital (Asesoría)">
-          <div class="f-service-radio"></div>
-          <div class="f-service-icon">📈</div>
-          <div class="f-service-name">Asesoría de Marketing</div>
-        </div>
-        <div class="f-service" data-service="Otro servicio">
-          <div class="f-service-radio"></div>
-          <div class="f-service-icon">💡</div>
-          <div class="f-service-name">Otro / No estoy seguro</div>
-        </div>
-      </div>
-
-      <div class="f-btn-row">
-        <button class="f-btn-next" onclick="goStep(2)">Siguiente →</button>
-      </div>
-    </div>
-
-    <!-- ═══ STEP 2: INFO ═══ -->
-    <div class="f-step" id="step2">
-      <div class="f-card-title">Cuéntanos sobre <em>ti</em></div>
-      <p class="f-card-sub">Necesitamos algunos datos para poder ayudarte mejor.</p>
-
-      <div class="f-row">
-        <div class="f-group">
-          <label>Nombre *</label>
-          <input type="text" placeholder="Tu nombre" id="fName" required>
-        </div>
-        <div class="f-group">
-          <label>Apellido *</label>
-          <input type="text" placeholder="Tu apellido" id="fLast" required>
-        </div>
-      </div>
-      <div class="f-row full">
-        <div class="f-group">
-          <label>Correo Electrónico *</label>
-          <input type="email" placeholder="tu@email.com" id="fEmail" required>
-        </div>
-      </div>
-      <div class="f-row full">
-        <div class="f-group">
-          <label>¿Ya tienes negocio o marca? *</label>
-          <select id="fBusiness">
-            <option value="">Selecciona una opción</option>
-            <option value="Sí, ya tengo negocio activo">Sí, ya tengo negocio activo</option>
-            <option value="Sí, pero estoy empezando">Sí, pero estoy empezando</option>
-            <option value="No, quiero empezar desde cero">No, quiero empezar desde cero</option>
-            <option value="Tengo una idea pero no he lanzado">Tengo una idea pero no he lanzado</option>
-          </select>
-        </div>
-      </div>
-      <div class="f-row full">
-        <div class="f-group">
-          <label>¿Cuál es tu presupuesto estimado?</label>
-        </div>
-      </div>
-      <div class="f-budgets">
-        <div class="f-budget" data-budget="Menos de $100">Menos de $100</div>
-        <div class="f-budget" data-budget="$100 - $300">$100 - $300</div>
-        <div class="f-budget" data-budget="$300 - $500">$300 - $500</div>
-        <div class="f-budget" data-budget="$500+">$500+</div>
-      </div>
-      <div class="f-row full">
-        <div class="f-group">
-          <label>¿Algo que quieras contarnos? (opcional)</label>
-          <textarea rows="3" placeholder="Cuéntanos brevemente qué necesitas o cuál es tu situación actual..." id="fMessage"></textarea>
-        </div>
-      </div>
-
-      <div class="f-btn-row">
-        <button class="f-btn-back" onclick="goStep(1)">← Atrás</button>
-        <button class="f-btn-next" onclick="goStep(3)">Siguiente →</button>
-      </div>
-    </div>
-
-    <!-- ═══ STEP 3: CONFIRM ═══ -->
-    <div class="f-step" id="step3">
-      <div class="f-card-title">Confirma y <em>conecta</em></div>
-      <p class="f-card-sub">Revisa tus datos. Al confirmar te redirigimos a WhatsApp para agendar tu consulta.</p>
-
-      <div class="f-summary" id="summaryBox">
-        <!-- Filled by JS -->
-      </div>
-
-      <div class="f-btn-row">
-        <button class="f-btn-back" onclick="goStep(2)">← Editar</button>
-        <button class="f-btn-whatsapp" onclick="sendToWhatsApp()">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Enviar a WhatsApp
-        </button>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="f-trust">
-    <div class="f-trust-item"><span>🔒</span> Datos seguros</div>
-    <div class="f-trust-item"><span>⚡</span> Respuesta en 24h</div>
-    <div class="f-trust-item"><span>📞</span> Consulta gratis</div>
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item">Edición de Video <span class="sep"></span></div>
+    <div class="marquee-item">Reels Profesionales <span class="sep"></span></div>
+    <div class="marquee-item">Cursos Digitales <span class="sep"></span></div>
+    <div class="marquee-item">Ecosistemas Digitales <span class="sep"></span></div>
+    <div class="marquee-item">Landing Pages <span class="sep"></span></div>
+    <div class="marquee-item">Marca Personal <span class="sep"></span></div>
+    <div class="marquee-item">Guiones de Video <span class="sep"></span></div>
+    <div class="marquee-item">Marketing Digital <span class="sep"></span></div>
+    <div class="marquee-item">DIA Club <span class="sep"></span></div>
+    <div class="marquee-item">Mentes Abundantes <span class="sep"></span></div>
+    <!-- duplicate -->
+    <div class="marquee-item">Edición de Video <span class="sep"></span></div>
+    <div class="marquee-item">Reels Profesionales <span class="sep"></span></div>
+    <div class="marquee-item">Cursos Digitales <span class="sep"></span></div>
+    <div class="marquee-item">Ecosistemas Digitales <span class="sep"></span></div>
+    <div class="marquee-item">Landing Pages <span class="sep"></span></div>
+    <div class="marquee-item">Marca Personal <span class="sep"></span></div>
+    <div class="marquee-item">Guiones de Video <span class="sep"></span></div>
+    <div class="marquee-item">Marketing Digital <span class="sep"></span></div>
+    <div class="marquee-item">DIA Club <span class="sep"></span></div>
+    <div class="marquee-item">Mentes Abundantes <span class="sep"></span></div>
   </div>
 </div>
+
+<!-- SERVICES -->
+<section id="servicios" class="reveal">
+  <div class="section-label">Servicios</div>
+  <h2 class="section-title">Todo lo que necesitas para <em>dominar</em> lo digital</h2>
+  <p class="section-desc">Soluciones integrales de marketing digital diseñadas para emprendedores y marcas que quieren escalar sin límites.</p>
+  <div class="services-grid">
+    <a href="https://www.mercadeomrr.com/formulario?servicio=edición+de+video" class="service-card" target="_top">
+      <div class="service-icon">🎬</div>
+      <h3>Edición de Video Profesional</h3>
+      <p>Transformamos tu contenido en reels irresistibles que capturan la atención y generan engagement real en todas tus plataformas.</p>
+    </a>
+    <a href="https://www.mercadeomrr.com/formulario?servicio=creación+de+cursos" class="service-card" target="_top">
+      <div class="service-icon">📚</div>
+      <h3>Creación de Cursos</h3>
+      <p>Diseñamos tu curso digital desde cero: estructura, contenido, plataforma y estrategia de lanzamiento incluidos.</p>
+    </a>
+    <a href="https://www.mercadeomrr.com/formulario?servicio=ecosistemas+digitales" class="service-card" target="_top">
+      <div class="service-icon">🌐</div>
+      <h3>Ecosistemas Digitales</h3>
+      <p>Construimos tu ecosistema completo: funnels, automatizaciones, email marketing y todo conectado para que vendas en piloto automático.</p>
+    </a>
+    <a href="https://www.mercadeomrr.com/formulario?servicio=landing+pages" class="service-card" target="_top">
+      <div class="service-icon">🎯</div>
+      <h3>Landing Pages & Web</h3>
+      <p>Páginas de alta conversión diseñadas para capturar leads y cerrar ventas. Estratégicas, rápidas y visualmente impactantes.</p>
+    </a>
+    <a href="https://www.mercadeomrr.com/formulario?servicio=guionización" class="service-card" target="_top">
+      <div class="service-icon">✍️</div>
+      <h3>Guionización de Videos</h3>
+      <p>Scripts estratégicos que enganchan desde el segundo uno. Storytelling que vende sin parecer que estás vendiendo.</p>
+    </a>
+    <a href="https://www.mercadeomrr.com/formulario?servicio=marca+personal" class="service-card" target="_top">
+      <div class="service-icon">👤</div>
+      <h3>Marca Personal</h3>
+      <p>Te ayudamos a descubrir tu voz única, posicionarte como autoridad y construir una marca personal que atraiga oportunidades.</p>
+    </a>
+  </div>
+</section>
+
+<!-- MENTES ABUNDANTES - PROGRAMA -->
+<section id="mentes" class="reveal">
+  <div class="section-label">Programa de Acompañamiento</div>
+  <h2 class="section-title">Lanza tu primer servicio con <em>Mentes Abundantes</em></h2>
+  <p class="section-desc">Un programa de acompañamiento 1:1 donde trabajas tu mentalidad, valores, propósito y estrategia — todo junto, en sesiones privadas — hasta que lanzas tu servicio con claridad real.</p>
+
+  <div class="mentes-mentors reveal">
+    <div class="mentor-card">
+      <div class="mentor-avatar"><img src="franklin.jpeg" alt="Franklin González"></div>
+      <h3>Franklin González</h3>
+      <p class="mentor-role">Mentalidad · Valores · Propósito</p>
+      <p>Trabaja contigo desde adentro: tus valores, tu propósito profundo y los bloqueos que te frenan sin que te des cuenta.</p>
+    </div>
+    <div class="mentor-card">
+      <div class="mentor-avatar"><img src="krystina-ma.png" alt="Krystina Zambrano"></div>
+      <h3>Krystina Zambrano</h3>
+      <p class="mentor-role">Estrategia · Mensaje · Marca</p>
+      <p>Trabaja contigo la estrategia: tu mensaje, tu oferta, cómo comunicarla y cómo cobrarla con confianza.</p>
+    </div>
+  </div>
+
+  <div class="mentes-modules reveal">
+    <div class="mentes-module-card">
+      <span class="mod-num">01</span>
+      <h4>Claridad interior y valores esenciales</h4>
+      <p>Coaching por valores, identificación de patrones limitantes y reconexión con tu propósito de vida.</p>
+    </div>
+    <div class="mentes-module-card">
+      <span class="mod-num">02</span>
+      <h4>Descubrimiento de propósito y visión</h4>
+      <p>Método Ikigai aplicado, exploración de talentos y definición de tu misión personal.</p>
+    </div>
+    <div class="mentes-module-card">
+      <span class="mod-num">03</span>
+      <h4>Branding profesional y propuesta de valor</h4>
+      <p>Identidad visual, mensaje diferenciador, cliente ideal y tono de comunicación.</p>
+    </div>
+    <div class="mentes-module-card">
+      <span class="mod-num">04</span>
+      <h4>Estrategia digital y estructura de negocio</h4>
+      <p>Diseño de servicios con precios definidos, página web y sistema de cobro organizado.</p>
+    </div>
+    <div class="mentes-module-card">
+      <span class="mod-num">05</span>
+      <h4>Integración y plan de acción consciente</h4>
+      <p>Revisión conjunta, alineación interna-externa y plan de acción con pasos concretos.</p>
+    </div>
+  </div>
+
+  <div class="mentes-price-row reveal">
+    <div class="mentes-price-card-main">
+      <div class="price-badge-top">Programa Completo</div>
+      <div class="big-price">$1,200<span> USD</span></div>
+      <ul class="price-includes">
+        <li>10 sesiones privadas 1:1 de 90 min</li>
+        <li>2 mentores especializados</li>
+        <li>Trabajo de identidad y propósito</li>
+        <li>Definición de tu servicio y mensaje</li>
+        <li>Acompañamiento hasta que te lances</li>
+        <li>Sin fecha de expiración</li>
+      </ul>
+      <a href="https://www.mentes-abundantes.com/ventaprograma" class="btn-primary" target="_blank">Estoy Lista →</a>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBRESÍA -->
+<section id="membresia" class="reveal">
+  <div class="section-label">Membresía Mensual</div>
+  <h2 class="section-title">Crece con <em>mentalidad</em> y <em>estrategia</em> cada mes</h2>
+  <p class="section-desc">Mentalidad profunda + marketing digital práctico. Dos pilares, cuatro clases mensuales en vivo, comunidad privada y grabaciones incluidas.</p>
+
+  <div class="mentes-features reveal">
+    <div class="mentes-card">
+      <div class="icon">🧠</div>
+      <h3>Mentalidad Profunda</h3>
+      <p>Valores, propósito, autoestima, creencias limitantes, merecimiento y síndrome del impostor — cada mes con Franklin.</p>
+    </div>
+    <div class="mentes-card">
+      <div class="icon">📈</div>
+      <h3>Marketing Digital Práctico</h3>
+      <p>Redes desde cero, contenido que conecta, marca personal con esencia e IA para principiantes — cada mes con Krystina.</p>
+    </div>
+    <div class="mentes-card">
+      <div class="icon">🤝</div>
+      <h3>Comunidad Privada</h3>
+      <p>Menos de 15 personas por clase. Un espacio seguro e íntimo con emprendedoras en el mismo camino. Colabora, aprende y crece junto a personas ambiciosas.</p>
+    </div>
+  </div>
+
+  <div class="waitlist-box reveal">
+    <div class="waitlist-badge">✦ Primera cohorte en marcha</div>
+    <h3 class="waitlist-title">¡Nuestra primera cohorte ya está activa!</h3>
+    <p class="waitlist-desc">Las puertas de la membresía están cerradas por ahora. Únete a la lista de espera para ser la primera en enterarte cuando abramos la próxima cohorte.</p>
+    <a href="https://www.mentes-abundantes.com/membresia" class="btn-primary" target="_blank" style="width:100%;text-align:center;justify-content:center;display:flex;">Unirme a la Lista de Espera →</a>
+    <p class="waitlist-note">Sin compromiso. Te avisamos cuando se abran los cupos.</p>
+  </div>
+</section>
+
+<!-- ASESORÍA DIGITAL -->
+<section id="asesoria" class="reveal">
+  <div class="asesoria-inner">
+    <div class="asesoria-left">
+      <div class="section-label">Asesoría Personalizada</div>
+      <h2 class="section-title">Asesoría Digital <em>1:1</em></h2>
+      <p class="section-desc">¿Necesitas orientación específica para tu negocio digital? Agenda una sesión de asesoría personalizada donde resolvemos tus dudas, analizamos tu estrategia y te damos un plan de acción claro.</p>
+      <div class="asesoria-features">
+        <div class="dia-feature"><div class="check">✓</div> Análisis de tu presencia digital actual</div>
+        <div class="dia-feature"><div class="check">✓</div> Estrategia personalizada para tu marca</div>
+        <div class="dia-feature"><div class="check">✓</div> Plan de acción concreto y accionable</div>
+        <div class="dia-feature"><div class="check">✓</div> Revisión de contenido y funnels</div>
+        <div class="dia-feature"><div class="check">✓</div> Recomendaciones de herramientas y plataformas</div>
+      </div>
+    </div>
+    <div class="asesoria-right">
+      <div class="asesoria-price-card">
+        <div class="asesoria-icon-big">💡</div>
+        <h3>Sesión de Asesoría Digital</h3>
+        <div class="asesoria-price">$150<span> USD</span></div>
+        <p class="asesoria-detail">Sesión privada donde trabajamos directamente en lo que tu negocio necesita para avanzar.</p>
+        <a href="https://buy.stripe.com/9B6eVd6d50YLg9g9rLdjO2W" class="btn-primary" target="_top">Agendar Asesoría — $150 USD →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LLAMADA GRATIS -->
+<div class="free-call-banner reveal">
+  <div class="free-call-inner">
+    <div class="free-call-icon">📞</div>
+    <div class="free-call-text">
+      <h3>Llamada de Claridad Gratis — 30 Minutos</h3>
+      <p>¿No sabes por dónde empezar? Agenda una llamada gratuita de 30 minutos y te ayudamos a definir tus próximos pasos. Sin compromiso.</p>
+    </div>
+    <a href="https://www.mercadeomrr.com/llamadaclaridad" class="btn-primary" target="_blank">Agendar Llamada Gratis →</a>
+  </div>
+</div>
+
+<!-- DIA CLUB -->
+<div class="dia-club" id="dia-club">
+  <div class="dia-club-inner reveal">
+    <div class="dia-left">
+      <div class="dia-badge">✦ Curso Recomendado</div>
+      <h2>Aprende con <span>DIA CLUB</span></h2>
+      <p class="desc">El curso de marketing digital de Digital Income Academy LLC. Domina las redes, crea contenido que vende y construye un negocio digital rentable desde cero.</p>
+      <div class="dia-features">
+        <div class="dia-feature">
+          <div class="check">✓</div>
+          Estrategias probadas de contenido viral
+        </div>
+        <div class="dia-feature">
+          <div class="check">✓</div>
+          Cómo monetizar tus redes sociales
+        </div>
+        <div class="dia-feature">
+          <div class="check">✓</div>
+          Creación de funnels de venta automatizados
+        </div>
+        <div class="dia-feature">
+          <div class="check">✓</div>
+          Comunidad exclusiva de emprendedores
+        </div>
+        <div class="dia-feature">
+          <div class="check">✓</div>
+          Acceso a plantillas y recursos premium
+        </div>
+        <div class="dia-feature">
+          <div class="check">✓</div>
+          Sesiones en vivo y mentoría grupal
+        </div>
+      </div>
+      <a href="https://www.mercadeomrr.com/dia-club" class="btn-primary" target="_blank">Quiero Unirme a DIA Club →</a>
+      <p style="font-size:0.75rem; color:var(--gray); margin-top:0.8rem;">* Producto de Digital Income Academy LLC</p>
+    </div>
+    <div class="dia-visual">
+      <div class="dia-price-card">
+        <div class="course-label">Digital Income Academy LLC</div>
+        <div class="course-name">DIA CLUB</div>
+        <div class="dia-modules">
+          <div class="dia-module"><span class="num">01</span> Fundamentos del Marketing Digital</div>
+          <div class="dia-module"><span class="num">02</span> Creación de Contenido que Vende</div>
+          <div class="dia-module"><span class="num">03</span> Estrategias de Redes Sociales</div>
+          <div class="dia-module"><span class="num">04</span> Funnels & Automatización</div>
+          <div class="dia-module"><span class="num">05</span> Monetización & Escalamiento</div>
+          <div class="dia-module"><span class="num">06</span> Marca Personal Magnética</div>
+        </div>
+        <a href="https://www.mercadeomrr.com/dia-club" class="btn-primary" target="_blank">Inscríbete Ahora →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section" id="contacto">
+  <h2>¿Lista para <em>transformar</em><br>tu negocio digital?</h2>
+  <p>Agenda una llamada gratuita de 30 minutos y descubre cómo podemos ayudarte a alcanzar tus metas.</p>
+  <a href="https://www.mercadeomrr.com/llamadaclaridad" class="btn-primary" style="font-size:1.1rem; padding:1.2rem 3rem;" target="_blank">Agenda Tu Llamada Gratis →</a>
+</section>
 
 <!-- FOOTER -->
-<div class="f-footer">
-  <p>© 2026 <a href="https://zambranokrystina-ui.github.io/mercadeomrr/">Mercadeo MRR LLC</a>. Todos los derechos reservados.</p>
-</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">
+        <img src="logo-mercadeo.png" alt="Mercadeo MRR" class="logo-img">
+      </div>
+      <p>© 2026 Mercadeo MRR LLC. Todos los derechos reservados.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#mentes">Mentes Abundantes</a>
+      <a href="#dia-club">DIA Club</a>
+      <a href="https://www.mercadeomrr.com/llamadaclaridad" target="_blank">Contacto</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/mentesabundantesoficial" title="Instagram" target="_blank">IG</a>
+      <a href="https://www.youtube.com/@manifiesto-abundancia" title="YouTube" target="_blank">YT</a>
+    </div>
+  </div>
+</footer>
 
 <script>
-// ═══════════════════════════════════════
-// 🔗 CONFIGURA AQUÍ
-// ═══════════════════════════════════════
-const WHATSAPP_NUMBER = '19197715951'; // ← TU NÚMERO DE WHATSAPP (sin + ni espacios)
-const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbythzGxdipvcFrgKlJeUK0SvKAJyGyYG1cbGCQiXa6iJMiaO1z-OMBTo-NgYf5nF-VP/exec'; // ← Pega aquí tu URL de Google Apps Script (ver instrucciones)
-// ═══════════════════════════════════════
-
-let selectedService = '';
-let selectedBudget = '';
-
-// Service selector
-document.querySelectorAll('.f-service').forEach(s => {
-  s.addEventListener('click', () => {
-    document.querySelectorAll('.f-service').forEach(x => x.classList.remove('sel'));
-    s.classList.add('sel');
-    selectedService = s.dataset.service;
-  });
-});
-
-// Budget selector
-document.querySelectorAll('.f-budget').forEach(b => {
-  b.addEventListener('click', () => {
-    document.querySelectorAll('.f-budget').forEach(x => x.classList.remove('sel'));
-    b.classList.add('sel');
-    selectedBudget = b.dataset.budget;
-  });
-});
-
-// Auto-select service from URL param
-const urlParams = new URLSearchParams(window.location.search);
-const serviceParam = urlParams.get('servicio');
-if (serviceParam) {
-  document.querySelectorAll('.f-service').forEach(s => {
-    if (s.dataset.service.toLowerCase().includes(serviceParam.toLowerCase())) {
-      s.click();
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
     }
   });
+}, { threshold: 0.15 });
+
+reveals.forEach(el => observer.observe(el));
+
+// Nav - no scroll needed in iframe
+
+// Testimonial Carousel
+let currentSlide = 0;
+const slides = document.querySelectorAll('.carousel-slide');
+const dots = document.querySelectorAll('.carousel-dots .dot');
+const totalSlides = slides.length;
+
+function goSlide(index) {
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = index;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
 }
 
-function showError(msg) {
-  const el = document.getElementById('errorMsg');
-  el.textContent = msg;
-  el.classList.add('show');
-  setTimeout(() => el.classList.remove('show'), 4000);
+function nextSlide() {
+  goSlide((currentSlide + 1) % totalSlides);
 }
 
-function goStep(step) {
-  if (step === 2 && !selectedService) {
-    showError('Por favor selecciona un servicio para continuar.');
-    return;
-  }
-  if (step === 3) {
-    const name = document.getElementById('fName').value.trim();
-    const last = document.getElementById('fLast').value.trim();
-    const email = document.getElementById('fEmail').value.trim();
-    const biz = document.getElementById('fBusiness').value;
-    
-    if (!name || !last || !email || !biz) {
-      showError('Por favor completa todos los campos obligatorios (*).');
-      return;
-    }
-
-    const summary = document.getElementById('summaryBox');
-    summary.innerHTML = `
-      <div class="f-summary-row"><span class="lab">Servicio</span><span class="val">${selectedService}</span></div>
-      <div class="f-summary-row"><span class="lab">Nombre</span><span class="val">${name} ${last}</span></div>
-      <div class="f-summary-row"><span class="lab">Email</span><span class="val">${email}</span></div>
-      <div class="f-summary-row"><span class="lab">Negocio</span><span class="val">${biz}</span></div>
-      ${selectedBudget ? `<div class="f-summary-row"><span class="lab">Presupuesto</span><span class="val">${selectedBudget}</span></div>` : ''}
-    `;
-  }
-
-  document.querySelectorAll('.f-step').forEach(s => s.classList.remove('active'));
-  document.getElementById('step' + step).classList.add('active');
-
-  for (let i = 1; i <= 3; i++) {
-    const prog = document.getElementById('prog' + i);
-    prog.classList.remove('active', 'done');
-    if (i < step) prog.classList.add('done');
-    if (i === step) prog.classList.add('active');
-  }
-  document.getElementById('line1').classList.toggle('done', step >= 2);
-  document.getElementById('line2').classList.toggle('done', step >= 3);
-  window.scrollTo(0, 0);
-}
-
-// ═══════════════════════════════════════
-// ENVIAR A GOOGLE SHEETS + WHATSAPP
-// ═══════════════════════════════════════
-function sendToWhatsApp() {
-  const name = document.getElementById('fName').value.trim();
-  const last = document.getElementById('fLast').value.trim();
-  const email = document.getElementById('fEmail').value.trim();
-  const biz = document.getElementById('fBusiness').value;
-  const msg = document.getElementById('fMessage').value.trim();
-
-  // Cambiar botón a loading
-  const btn = document.querySelector('.f-btn-whatsapp');
-  const originalText = btn.innerHTML;
-  btn.innerHTML = '⏳ Guardando datos...';
-  btn.disabled = true;
-
-  // Datos para Google Sheets
-  const data = {
-    fecha: new Date().toLocaleString('es-US', { timeZone: 'America/Chicago' }),
-    nombre: name + ' ' + last,
-    email: email,
-    servicio: selectedService,
-    negocio: biz,
-    presupuesto: selectedBudget || 'No especificado',
-    mensaje: msg || 'Sin mensaje',
-    fuente: 'Formulario Mercadeo MRR'
-  };
-
-  // Enviar a Google Sheets
-  fetch(GOOGLE_SHEET_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  })
-  .then(() => {
-    console.log('✅ Datos enviados a Google Sheets');
-  })
-  .catch(err => {
-    console.log('⚠️ Error enviando a Sheets (el lead se envía a WhatsApp igual):', err);
-  })
-  .finally(() => {
-    // Siempre abre WhatsApp (aunque Sheets falle)
-    let text = `¡Hola! 👋 Soy *${name} ${last}* y me interesa el servicio de *${selectedService}* de Mercadeo MRR.\n\n`;
-    text += `📧 Email: ${email}\n`;
-    text += `💼 Negocio: ${biz}\n`;
-    if (selectedBudget) text += `💰 Presupuesto: ${selectedBudget}\n`;
-    if (msg) text += `\n📝 Nota: ${msg}\n`;
-    text += `\n¿Podemos agendar una llamada? ¡Gracias!`;
-
-    const encoded = encodeURIComponent(text);
-
-    btn.innerHTML = '✅ ¡Listo! Abriendo WhatsApp...';
-    setTimeout(() => {
-      // Redirige a WhatsApp (compatible con iframes)
-      var waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
-      try {
-        window.top.location.href = waUrl;
-      } catch(e) {
-        window.location.href = waUrl;
-      }
-    }, 800);
-  });
-}
+// Auto-rotate every 4 seconds
+setInterval(nextSlide, 4000);
 </script>
 
 </body>
