@@ -4,22 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mercadeo MRR LLC — Tu Ecosistema Digital Completo</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
 :root {
-  --bg: #0a0a0a;
-  --bg-card: #111111;
-  --bg-card-hover: #1a1a1a;
-  --gold: #d4a843;
-  --gold-light: #f0d078;
-  --gold-dark: #a07820;
-  --white: #f5f0e8;
-  --gray: #8a8680;
-  --gray-light: #c5c0b8;
-  --accent: #e8572a;
-  --font-display: 'Syne', sans-serif;
+  --bg: #EDEBE6;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f5f3ee;
+  --gold: #9A7B32;
+  --gold-light: #7a6228;
+  --gold-dark: #605343;
+  --white: #2a2518;
+  --gray: #7a7368;
+  --gray-light: #605343;
+  --accent: #58592F;
+  --brown: #605343;
+  --base: #D9D6CF;
+  --font-display: 'Poppins', sans-serif;
   --font-serif: 'Playfair Display', serif;
   --font-body: 'DM Sans', sans-serif;
 }
@@ -59,51 +61,84 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(10,10,10,0.95);
-  border-bottom: 1px solid rgba(212,168,67,0.1);
+  background: rgba(237,235,230,0.98);
+  border-bottom: 1px solid rgba(154,123,50,0.1);
   transition: all 0.4s;
 }
 
 .logo {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.3rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  display: flex;
+  align-items: center;
 }
 
-.logo span { color: var(--gold); }
+.logo-img {
+  height: 40px;
+  width: auto;
+}
 
-.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links { display: flex; gap: 1.5rem; align-items: center; }
 
-.nav-links a {
+.nav-links > a,
+.nav-dropdown > a {
   color: var(--gray-light);
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.05em;
   transition: color 0.3s;
+  cursor: pointer;
+}
+
+.nav-links > a small,
+.nav-dropdown > a small {
+  font-size: 0.65rem;
+  opacity: 0.6;
+}
+
+.nav-links > a:hover,
+.nav-dropdown > a:hover { color: var(--gold); }
+
+.nav-dropdown {
   position: relative;
 }
 
-.nav-links a::after {
-  content: '';
+.nav-dropdown-menu {
+  display: none;
   position: absolute;
-  bottom: -4px;
+  top: 100%;
   left: 0;
-  width: 0;
-  height: 1.5px;
-  background: var(--gold);
-  transition: width 0.3s;
+  background: var(--bg-card);
+  border: 1px solid rgba(154,123,50,0.12);
+  border-radius: 0.8rem;
+  padding: 0.5rem 0;
+  min-width: 180px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  z-index: 100;
+  margin-top: 0.5rem;
 }
 
-.nav-links a:hover { color: var(--gold); }
-.nav-links a:hover::after { width: 100%; }
+.nav-dropdown:hover .nav-dropdown-menu {
+  display: block;
+}
+
+.nav-dropdown-menu a {
+  display: block;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.82rem;
+  color: var(--gray-light);
+  text-decoration: none;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.nav-dropdown-menu a:hover {
+  background: rgba(154,123,50,0.06);
+  color: var(--gold);
+}
 
 .nav-cta {
   background: var(--gold) !important;
-  color: var(--bg) !important;
+  color: #fff !important;
   padding: 0.6rem 1.5rem;
   border-radius: 2rem;
   font-weight: 700 !important;
@@ -113,10 +148,8 @@ nav {
 
 .nav-cta:hover {
   transform: scale(1.05) !important;
-  box-shadow: 0 0 30px rgba(212,168,67,0.3);
+  box-shadow: 0 0 30px rgba(154,123,50,0.3);
 }
-
-.nav-cta::after { display: none !important; }
 
 /* Mobile menu toggle */
 .menu-toggle {
@@ -152,7 +185,7 @@ nav {
   height: 700px;
   border-radius: 50%;
   filter: blur(180px);
-  opacity: 0.15;
+  opacity: 0.06;
   pointer-events: none;
 }
 
@@ -173,8 +206,8 @@ nav {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(212,168,67,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212,168,67,0.03) 1px, transparent 1px);
+    linear-gradient(rgba(154,123,50,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(154,123,50,0.05) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
 }
@@ -195,8 +228,8 @@ nav {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(212,168,67,0.1);
-  border: 1px solid rgba(212,168,67,0.2);
+  background: rgba(154,123,50,0.1);
+  border: 1px solid rgba(154,123,50,0.2);
   padding: 0.4rem 1rem;
   border-radius: 2rem;
   font-size: 0.78rem;
@@ -273,7 +306,7 @@ nav {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 40px rgba(212,168,67,0.35);
+  box-shadow: 0 8px 40px rgba(154,123,50,0.35);
 }
 
 .btn-secondary {
@@ -296,7 +329,7 @@ nav {
 .btn-secondary:hover {
   border-color: var(--gold);
   color: var(--gold);
-  background: rgba(212,168,67,0.05);
+  background: rgba(154,123,50,0.1);
 }
 
 /* Hero visual */
@@ -305,13 +338,46 @@ nav {
   animation: fadeInUp 0.8s ease 0.4s both;
 }
 
+.hero-photo-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.hero-photo {
+  width: 320px;
+  height: 400px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 1.5rem;
+  border: 3px solid rgba(154,123,50,0.2);
+  box-shadow: 0 20px 60px rgba(96,83,67,0.15);
+  position: relative;
+  z-index: 2;
+}
+
+.hero-photo-glow {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 100px;
+  background: radial-gradient(ellipse, rgba(154,123,50,0.08), transparent 70%);
+  filter: blur(20px);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .hero-card {
-  background: linear-gradient(145deg, rgba(212,168,67,0.08), rgba(17,17,17,0.9));
-  border: 1px solid rgba(212,168,67,0.15);
+  background: #ffffff;
+  border: 1px solid rgba(154,123,50,0.12);
   border-radius: 1.5rem;
   padding: 2.5rem;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 20px rgba(96,83,67,0.08);
 }
 
 .hero-card::before {
@@ -321,7 +387,7 @@ nav {
   right: -50%;
   width: 200%;
   height: 200%;
-  background: conic-gradient(from 180deg, transparent, rgba(212,168,67,0.05), transparent 30%);
+  background: conic-gradient(from 180deg, transparent, rgba(154,123,50,0.1), transparent 30%);
   animation: cardSpin 8s linear infinite;
 }
 
@@ -341,9 +407,9 @@ nav {
 .stat-item {
   text-align: center;
   padding: 1rem;
-  background: rgba(10,10,10,0.5);
+  background: rgba(154,123,50,0.04);
   border-radius: 1rem;
-  border: 1px solid rgba(212,168,67,0.08);
+  border: 1px solid rgba(154,123,50,0.1);
   overflow: hidden;
 }
 
@@ -364,33 +430,77 @@ nav {
   font-weight: 500;
 }
 
-.hero-testimonial {
+.hero-testimonial-carousel {
   margin-top: 1.5rem;
   padding: 1.2rem;
-  background: rgba(10,10,10,0.5);
+  background: rgba(255,255,255,0.6);
   border-radius: 1rem;
-  border: 1px solid rgba(212,168,67,0.08);
+  border: 1px solid rgba(154,123,50,0.1);
+  position: relative;
+  overflow: hidden;
+  min-height: 130px;
 }
 
-.hero-testimonial .stars {
+.carousel-track {
+  position: relative;
+}
+
+.carousel-slide {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  position: relative;
+  pointer-events: auto;
+}
+
+.carousel-slide .stars {
   color: var(--gold);
   font-size: 0.85rem;
   margin-bottom: 0.5rem;
 }
 
-.hero-testimonial p {
+.carousel-slide p {
   font-size: 0.85rem;
   color: var(--gray-light);
   font-style: italic;
   line-height: 1.5;
 }
 
-.hero-testimonial .author {
+.carousel-slide .author {
   font-size: 0.75rem;
   color: var(--gold);
   font-style: normal;
   margin-top: 0.5rem;
   font-weight: 600;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 0.8rem;
+}
+
+.carousel-dots .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(154,123,50,0.2);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.carousel-dots .dot.active {
+  background: var(--gold);
+  transform: scale(1.2);
 }
 
 @keyframes fadeInUp {
@@ -401,10 +511,10 @@ nav {
 /* ─── MARQUEE ─── */
 .marquee-section {
   padding: 1.5rem 0;
-  border-top: 1px solid rgba(212,168,67,0.1);
-  border-bottom: 1px solid rgba(212,168,67,0.1);
+  border-top: 1px solid rgba(154,123,50,0.1);
+  border-bottom: 1px solid rgba(154,123,50,0.1);
   overflow: hidden;
-  background: rgba(212,168,67,0.02);
+  background: rgba(154,123,50,0.04);
 }
 
 .marquee-track {
@@ -497,7 +607,7 @@ section {
 
 .service-card {
   background: var(--bg-card);
-  border: 1px solid rgba(212,168,67,0.08);
+  border: 1px solid rgba(154,123,50,0.1);
   border-radius: 1.2rem;
   padding: 2rem;
   transition: all 0.4s;
@@ -507,6 +617,7 @@ section {
   text-decoration: none;
   color: var(--white);
   display: block;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
 }
 
 .service-card::before {
@@ -523,7 +634,7 @@ section {
 
 .service-card:hover {
   background: var(--bg-card-hover);
-  border-color: rgba(212,168,67,0.2);
+  border-color: rgba(154,123,50,0.2);
   transform: translateY(-4px);
 }
 
@@ -532,14 +643,15 @@ section {
 .service-icon {
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, rgba(212,168,67,0.15), rgba(212,168,67,0.05));
+  background: linear-gradient(135deg, rgba(154,123,50,0.08), rgba(154,123,50,0.1));
   border-radius: 0.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.3rem;
   margin-bottom: 1.2rem;
-  border: 1px solid rgba(212,168,67,0.1);
+  border: 1px solid rgba(154,123,50,0.1);
+  filter: grayscale(1) sepia(1) hue-rotate(-5deg) saturate(2) brightness(0.75);
 }
 
 .service-card h3 {
@@ -567,8 +679,8 @@ section {
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
-  background: linear-gradient(145deg, rgba(232,87,42,0.05), rgba(212,168,67,0.05));
-  border: 1px solid rgba(212,168,67,0.12);
+  background: linear-gradient(145deg, rgba(88,89,47,0.05), rgba(154,123,50,0.1));
+  border: 1px solid rgba(154,123,50,0.12);
   border-radius: 2rem;
   padding: 4rem;
   position: relative;
@@ -582,7 +694,7 @@ section {
   right: -200px;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(232,87,42,0.1), transparent 70%);
+  background: radial-gradient(circle, rgba(88,89,47,0.1), transparent 70%);
   pointer-events: none;
 }
 
@@ -590,8 +702,8 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(232,87,42,0.15);
-  border: 1px solid rgba(232,87,42,0.3);
+  background: rgba(88,89,47,0.06);
+  border: 1px solid rgba(88,89,47,0.3);
   color: var(--accent);
   padding: 0.4rem 1rem;
   border-radius: 2rem;
@@ -642,8 +754,8 @@ section {
 .dia-feature .check {
   width: 24px;
   height: 24px;
-  background: rgba(212,168,67,0.15);
-  border: 1px solid rgba(212,168,67,0.3);
+  background: rgba(154,123,50,0.08);
+  border: 1px solid rgba(154,123,50,0.3);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -660,8 +772,8 @@ section {
 }
 
 .dia-price-card {
-  background: rgba(10,10,10,0.8);
-  border: 1px solid rgba(212,168,67,0.15);
+  background: rgba(255,255,255,0.8);
+  border: 1px solid rgba(154,123,50,0.08);
   border-radius: 1.5rem;
   padding: 2.5rem;
   text-align: center;
@@ -700,11 +812,11 @@ section {
   align-items: center;
   gap: 0.8rem;
   padding: 0.7rem 1rem;
-  background: rgba(212,168,67,0.05);
+  background: rgba(154,123,50,0.1);
   border-radius: 0.6rem;
   font-size: 0.85rem;
   color: var(--gray-light);
-  border: 1px solid rgba(212,168,67,0.06);
+  border: 1px solid rgba(154,123,50,0.12);
 }
 
 .dia-module .num {
@@ -714,7 +826,7 @@ section {
   color: var(--gold);
   width: 24px;
   height: 24px;
-  background: rgba(212,168,67,0.1);
+  background: rgba(154,123,50,0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -738,7 +850,7 @@ section {
   position: absolute;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(212,168,67,0.06), transparent 70%);
+  background: radial-gradient(circle, rgba(154,123,50,0.12), transparent 70%);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -760,7 +872,7 @@ section {
 
 .mentes-card {
   background: var(--bg-card);
-  border: 1px solid rgba(212,168,67,0.08);
+  border: 1px solid rgba(154,123,50,0.08);
   border-radius: 1.2rem;
   padding: 2.5rem 2rem;
   transition: all 0.4s;
@@ -768,13 +880,14 @@ section {
 }
 
 .mentes-card:hover {
-  border-color: rgba(212,168,67,0.2);
+  border-color: rgba(154,123,50,0.2);
   transform: translateY(-4px);
 }
 
 .mentes-card .icon {
   font-size: 2.2rem;
   margin-bottom: 1.2rem;
+  filter: grayscale(1) sepia(1) hue-rotate(-5deg) saturate(2) brightness(0.75);
 }
 
 .mentes-card h3 {
@@ -802,14 +915,14 @@ section {
   position: relative;
   padding: 2rem;
   background: var(--bg-card);
-  border: 1px solid rgba(212,168,67,0.08);
+  border: 1px solid rgba(154,123,50,0.08);
   border-radius: 1.2rem;
   counter-increment: step;
   transition: all 0.4s;
 }
 
 .step:hover {
-  border-color: rgba(212,168,67,0.2);
+  border-color: rgba(154,123,50,0.2);
   transform: translateY(-4px);
 }
 
@@ -818,7 +931,7 @@ section {
   font-family: var(--font-display);
   font-size: 3rem;
   font-weight: 800;
-  color: rgba(212,168,67,0.1);
+  color: rgba(154,123,50,0.1);
   line-height: 1;
   margin-bottom: 1rem;
   display: block;
@@ -848,7 +961,7 @@ section {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, rgba(212,168,67,0.08) 0%, transparent 60%);
+  background: radial-gradient(ellipse at center, rgba(154,123,50,0.08) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -886,7 +999,7 @@ section {
 
 /* ─── FOOTER ─── */
 footer {
-  border-top: 1px solid rgba(212,168,67,0.1);
+  border-top: 1px solid rgba(154,123,50,0.1);
   padding: 3rem;
   max-width: 1400px;
   margin: 0 auto;
@@ -931,7 +1044,7 @@ footer {
 .footer-social a {
   width: 40px;
   height: 40px;
-  border: 1px solid rgba(212,168,67,0.15);
+  border: 1px solid rgba(154,123,50,0.08);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -945,7 +1058,81 @@ footer {
 .footer-social a:hover {
   border-color: var(--gold);
   color: var(--gold);
-  background: rgba(212,168,67,0.05);
+  background: rgba(154,123,50,0.1);
+}
+
+/* ─── WAITLIST ─── */
+.waitlist-box{
+  max-width:520px;
+  margin:0 auto;
+  background:linear-gradient(145deg,rgba(154,123,50,0.12),rgba(255,255,255,0.9));
+  border:1px solid rgba(154,123,50,0.18);
+  border-radius:1.5rem;
+  padding:2.5rem;
+  text-align:center;
+}
+
+.waitlist-badge{
+  display:inline-block;
+  background:rgba(154,123,50,0.12);
+  border:1px solid rgba(154,123,50,0.25);
+  color:var(--gold-light);
+  font-size:0.75rem;
+  font-weight:700;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  padding:0.35rem 1rem;
+  border-radius:2rem;
+  margin-bottom:1.2rem;
+}
+
+.waitlist-title{
+  font-family:var(--font-display);
+  font-size:1.3rem;
+  font-weight:800;
+  margin-bottom:0.6rem;
+}
+
+.waitlist-desc{
+  font-size:0.9rem;
+  color:var(--gray-light);
+  line-height:1.6;
+  margin-bottom:1.5rem;
+}
+
+.waitlist-plans{
+  display:flex;
+  flex-direction:column;
+  gap:0.5rem;
+  margin-bottom:1.5rem;
+}
+
+.waitlist-plan{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(255,255,255,0.5);
+  border:1px solid rgba(154,123,50,0.12);
+  border-radius:0.7rem;
+  padding:0.8rem 1rem;
+}
+
+.waitlist-plan-name{
+  font-size:0.85rem;
+  color:var(--gray-light);
+}
+
+.waitlist-plan-price{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:0.85rem;
+  color:var(--gold);
+}
+
+.waitlist-note{
+  font-size:0.78rem;
+  color:var(--gray);
+  margin-top:1rem;
 }
 
 /* ─── MENTORS ─── */
@@ -958,7 +1145,7 @@ footer {
 
 .mentor-card {
   background: var(--bg-card);
-  border: 1px solid rgba(212,168,67,0.08);
+  border: 1px solid rgba(154,123,50,0.08);
   border-radius: 1.2rem;
   padding: 2rem;
   text-align: center;
@@ -966,23 +1153,24 @@ footer {
 }
 
 .mentor-card:hover {
-  border-color: rgba(212,168,67,0.2);
+  border-color: rgba(154,123,50,0.2);
   transform: translateY(-4px);
 }
 
 .mentor-avatar {
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.4rem;
-  color: var(--bg);
   margin: 0 auto 1rem;
+  border: 2px solid rgba(154,123,50,0.2);
+  overflow: hidden;
+}
+
+.mentor-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
 }
 
 .mentor-card h3 {
@@ -1016,14 +1204,14 @@ footer {
 
 .mentes-module-card {
   background: var(--bg-card);
-  border: 1px solid rgba(212,168,67,0.08);
+  border: 1px solid rgba(154,123,50,0.08);
   border-radius: 1rem;
   padding: 1.5rem;
   transition: all 0.4s;
 }
 
 .mentes-module-card:hover {
-  border-color: rgba(212,168,67,0.2);
+  border-color: rgba(154,123,50,0.2);
 }
 
 .mod-num {
@@ -1031,7 +1219,7 @@ footer {
   font-weight: 800;
   font-size: 0.8rem;
   color: var(--gold);
-  background: rgba(212,168,67,0.1);
+  background: rgba(154,123,50,0.1);
   padding: 0.3rem 0.6rem;
   border-radius: 0.4rem;
   display: inline-block;
@@ -1058,8 +1246,8 @@ footer {
 }
 
 .mentes-price-card-main {
-  background: linear-gradient(145deg, rgba(212,168,67,0.08), rgba(17,17,17,0.9));
-  border: 1px solid rgba(212,168,67,0.2);
+  background: linear-gradient(145deg, rgba(154,123,50,0.08), rgba(255,255,255,0.9));
+  border: 1px solid rgba(154,123,50,0.2);
   border-radius: 1.5rem;
   padding: 3rem;
   text-align: center;
@@ -1102,7 +1290,7 @@ footer {
   font-size: 0.9rem;
   color: var(--gray-light);
   padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(212,168,67,0.06);
+  border-bottom: 1px solid rgba(154,123,50,0.12);
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -1126,7 +1314,7 @@ footer {
 
 .pricing-card {
   background: var(--bg-card);
-  border: 1px solid rgba(212,168,67,0.08);
+  border: 1px solid rgba(154,123,50,0.08);
   border-radius: 1.5rem;
   padding: 2.5rem 2rem;
   text-align: center;
@@ -1135,13 +1323,13 @@ footer {
 }
 
 .pricing-card:hover {
-  border-color: rgba(212,168,67,0.15);
+  border-color: rgba(154,123,50,0.08);
   transform: translateY(-4px);
 }
 
 .pricing-card.featured {
-  border-color: rgba(212,168,67,0.3);
-  background: linear-gradient(145deg, rgba(212,168,67,0.08), var(--bg-card));
+  border-color: rgba(154,123,50,0.3);
+  background: linear-gradient(145deg, rgba(154,123,50,0.08), var(--bg-card));
 }
 
 .pricing-popular {
@@ -1230,8 +1418,8 @@ footer {
 }
 
 .asesoria-price-card {
-  background: linear-gradient(145deg, rgba(212,168,67,0.08), rgba(17,17,17,0.9));
-  border: 1px solid rgba(212,168,67,0.15);
+  background: linear-gradient(145deg, rgba(154,123,50,0.08), rgba(255,255,255,0.9));
+  border: 1px solid rgba(154,123,50,0.08);
   border-radius: 1.5rem;
   padding: 2.5rem;
   text-align: center;
@@ -1240,6 +1428,7 @@ footer {
 .asesoria-icon-big {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  filter: grayscale(1) sepia(1) hue-rotate(-5deg) saturate(2) brightness(0.75);
 }
 
 .asesoria-price-card h3 {
@@ -1282,8 +1471,8 @@ footer {
   display: flex;
   align-items: center;
   gap: 2rem;
-  background: linear-gradient(135deg, rgba(212,168,67,0.1), rgba(232,87,42,0.05));
-  border: 1px solid rgba(212,168,67,0.2);
+  background: linear-gradient(135deg, rgba(154,123,50,0.1), rgba(88,89,47,0.05));
+  border: 1px solid rgba(154,123,50,0.2);
   border-radius: 1.5rem;
   padding: 2.5rem 3rem;
 }
@@ -1291,6 +1480,7 @@ footer {
 .free-call-icon {
   font-size: 2.5rem;
   flex-shrink: 0;
+  filter: grayscale(1) sepia(1) hue-rotate(-5deg) saturate(2) brightness(0.75);
 }
 
 .free-call-text {
@@ -1330,15 +1520,28 @@ footer {
     top: 100%;
     left: 0;
     right: 0;
-    background: rgba(10,10,10,0.95);
+    background: rgba(237,235,230,0.98);
     backdrop-filter: blur(20px);
     flex-direction: column;
     padding: 1.5rem;
-    gap: 1rem;
-    border-bottom: 1px solid rgba(212,168,67,0.1);
+    gap: 0.8rem;
+    border-bottom: 1px solid rgba(154,123,50,0.1);
   }
   .nav-links.active { display: flex; }
   .menu-toggle { display: flex; }
+  
+  .nav-dropdown-menu {
+    position: static;
+    display: block;
+    box-shadow: none;
+    border: none;
+    padding: 0 0 0 1rem;
+    margin: 0.3rem 0 0;
+    min-width: auto;
+    background: transparent;
+  }
+  .nav-dropdown-menu a { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
+  .logo-img { height: 32px; }
   
   .hero { padding: 2rem 1.2rem 2rem; }
   .hero-content { gap: 2rem; }
@@ -1349,11 +1552,12 @@ footer {
   .hero-buttons .btn-primary,
   .hero-buttons .btn-secondary { width: 100%; text-align: center; justify-content: center; padding: 0.9rem 1.5rem; font-size: 0.9rem; }
   
+  .hero-photo { width: 220px; height: 280px; border-radius: 1.2rem; }
   .hero-card { padding: 1.5rem; }
   .stat-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
   .stat-number { font-size: 1.6rem; }
   .stat-label { font-size: 0.65rem; }
-  .hero-testimonial p { font-size: 0.8rem; }
+  .carousel-slide p { font-size: 0.8rem; }
   
   section { padding: 3rem 1.2rem; }
   .dia-club { padding: 3rem 1.2rem; }
@@ -1402,17 +1606,28 @@ footer {
 
 <!-- NAV -->
 <nav>
-  <div class="logo">Mercadeo <span>MRR</span></div>
+  <div class="logo">
+    <img src="logo-mercadeo.png" alt="Mercadeo MRR" class="logo-img">
+  </div>
   <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
     <span></span><span></span><span></span>
   </button>
   <div class="nav-links">
-    <a href="#servicios">Servicios</a>
-    <a href="#mentes">Mentes Abundantes</a>
-    <a href="#membresia">Membresía</a>
-    <a href="#asesoria">Asesoría</a>
+    <div class="nav-dropdown">
+      <a href="#servicios">Servicios <small>▾</small></a>
+      <div class="nav-dropdown-menu">
+        <a href="#asesoria">Asesoría Digital</a>
+        <a href="https://zambranokrystina-ui.github.io/mercadeomrr/formulario.html" target="_blank">Cotización</a>
+      </div>
+    </div>
+    <div class="nav-dropdown">
+      <a href="#mentes">Mentes Abundantes <small>▾</small></a>
+      <div class="nav-dropdown-menu">
+        <a href="#membresia">Membresía</a>
+      </div>
+    </div>
     <a href="#dia-club">DIA Club</a>
-    <a class="nav-cta" href="#contacto">Llamada Gratis</a>
+    <a class="nav-cta" href="https://zambranokrystina-ui.github.io/mercadeomrr/claridad.html" target="_blank">Llamada Gratis</a>
   </div>
 </nav>
 
@@ -1432,7 +1647,11 @@ footer {
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-card">
+      <div class="hero-photo-wrapper">
+        <img src="krystina.png" alt="Krystina Zambrano — Mercadeo MRR" class="hero-photo">
+        <div class="hero-photo-glow"></div>
+      </div>
+      <div class="hero-card" style="margin-top:1.5rem;">
         <div class="hero-card-inner">
           <div class="stat-grid">
             <div class="stat-item">
@@ -1452,10 +1671,35 @@ footer {
               <div class="stat-label">Vistas Generadas</div>
             </div>
           </div>
-          <div class="hero-testimonial">
-            <div class="stars">★★★★★</div>
-            <p>"Mercadeo MRR transformó por completo mi presencia digital. Mis reels ahora generan ventas reales."</p>
-            <div class="author">— Cliente Satisfecha</div>
+          <div class="hero-testimonial-carousel">
+            <div class="carousel-track" id="carouselTrack">
+              <div class="carousel-slide active">
+                <div class="stars">★★★★★</div>
+                <p>"Krystina Zambrano transformó por completo mi presencia digital. Mis reels ahora generan ventas reales."</p>
+                <div class="author">— Cliente Satisfecha</div>
+              </div>
+              <div class="carousel-slide">
+                <div class="stars">★★★★★</div>
+                <p>"Gracias por guiarme y ser esa luz que alumbra el camino. Ustedes fueron mi brújula."</p>
+                <div class="author">— Misladys R.</div>
+              </div>
+              <div class="carousel-slide">
+                <div class="stars">★★★★★</div>
+                <p>"Me acompañaron a redescubrir mis valores y crear un nuevo concepto de lo que significa ser emprendedora."</p>
+                <div class="author">— Paola</div>
+              </div>
+              <div class="carousel-slide">
+                <div class="stars">★★★★★</div>
+                <p>"Pude crear un negocio desde cero. Lo que antes era solo un hobby, hoy genera ventas reales."</p>
+                <div class="author">— Susana M.</div>
+              </div>
+            </div>
+            <div class="carousel-dots" id="carouselDots">
+              <span class="dot active" onclick="goSlide(0)"></span>
+              <span class="dot" onclick="goSlide(1)"></span>
+              <span class="dot" onclick="goSlide(2)"></span>
+              <span class="dot" onclick="goSlide(3)"></span>
+            </div>
           </div>
         </div>
       </div>
@@ -1537,13 +1781,13 @@ footer {
 
   <div class="mentes-mentors reveal">
     <div class="mentor-card">
-      <div class="mentor-avatar">F</div>
+      <div class="mentor-avatar"><img src="franklin.jpg" alt="Franklin González"></div>
       <h3>Franklin González</h3>
       <p class="mentor-role">Mentalidad · Valores · Propósito</p>
       <p>Trabaja contigo desde adentro: tus valores, tu propósito profundo y los bloqueos que te frenan sin que te des cuenta.</p>
     </div>
     <div class="mentor-card">
-      <div class="mentor-avatar">K</div>
+      <div class="mentor-avatar"><img src="krystina-ma.png" alt="Krystina Zambrano"></div>
       <h3>Krystina Zambrano</h3>
       <p class="mentor-role">Estrategia · Mensaje · Marca</p>
       <p>Trabaja contigo la estrategia: tu mensaje, tu oferta, cómo comunicarla y cómo cobrarla con confianza.</p>
@@ -1615,36 +1859,16 @@ footer {
     <div class="mentes-card">
       <div class="icon">🤝</div>
       <h3>Comunidad Privada</h3>
-      <p>Un espacio seguro con emprendedoras en el mismo camino. Colabora, aprende y crece junto a personas ambiciosas.</p>
+      <p>Menos de 15 personas por clase. Un espacio seguro e íntimo con emprendedoras en el mismo camino. Colabora, aprende y crece junto a personas ambiciosas.</p>
     </div>
   </div>
 
-  <div class="pricing-cards reveal">
-    <div class="pricing-card">
-      <div class="pricing-label">Plan Mensual</div>
-      <div class="pricing-amount">$25<span>/mes</span></div>
-      <ul class="pricing-list">
-        <li>4 clases mensuales en vivo</li>
-        <li>Ejercicios de integración</li>
-        <li>Grabaciones disponibles</li>
-        <li>Comunidad privada</li>
-        <li>Cancela cuando quieras</li>
-      </ul>
-      <a href="https://www.mentes-abundantes.com/membresiapago" class="btn-secondary" target="_blank">Empezar →</a>
-    </div>
-    <div class="pricing-card featured">
-      <div class="pricing-popular">Más Popular</div>
-      <div class="pricing-label">Plan Compromiso</div>
-      <div class="pricing-amount">$100<span>/6 meses</span></div>
-      <div class="pricing-save">Ahorra $50 USD</div>
-      <ul class="pricing-list">
-        <li>Todo del plan mensual</li>
-        <li>6 meses de acceso garantizado</li>
-        <li>Precio bloqueado</li>
-        <li>Prioridad en sesiones grupales</li>
-      </ul>
-      <a href="https://www.mentes-abundantes.com/membresiapago" class="btn-primary" target="_blank">Quiero los 6 Meses →</a>
-    </div>
+  <div class="waitlist-box reveal">
+    <div class="waitlist-badge">✦ Primera cohorte en marcha</div>
+    <h3 class="waitlist-title">¡Nuestra primera cohorte ya está activa!</h3>
+    <p class="waitlist-desc">Las puertas de la membresía están cerradas por ahora. Únete a la lista de espera para ser la primera en enterarte cuando abramos la próxima cohorte.</p>
+    <a href="https://www.mentes-abundantes.com/membresia" class="btn-primary" target="_blank" style="width:100%;text-align:center;justify-content:center;display:flex;">Unirme a la Lista de Espera →</a>
+    <p class="waitlist-note">Sin compromiso. Te avisamos cuando se abran los cupos.</p>
   </div>
 </section>
 
@@ -1683,7 +1907,7 @@ footer {
       <h3>Llamada de Claridad Gratis — 30 Minutos</h3>
       <p>¿No sabes por dónde empezar? Agenda una llamada gratuita de 30 minutos y te ayudamos a definir tus próximos pasos. Sin compromiso.</p>
     </div>
-    <a href="https://www.mentes-abundantes.com/claridad" class="btn-primary" target="_blank">Agendar Llamada Gratis →</a>
+    <a href="https://zambranokrystina-ui.github.io/mercadeomrr/claridad.html" class="btn-primary" target="_blank">Agendar Llamada Gratis →</a>
   </div>
 </div>
 
@@ -1691,7 +1915,7 @@ footer {
 <div class="dia-club" id="dia-club">
   <div class="dia-club-inner reveal">
     <div class="dia-left">
-      <div class="dia-badge">🔥 Curso Recomendado</div>
+      <div class="dia-badge">✦ Curso Recomendado</div>
       <h2>Aprende con <span>DIA CLUB</span></h2>
       <p class="desc">El curso de marketing digital de Digital Income Academy LLC. Domina las redes, crea contenido que vende y construye un negocio digital rentable desde cero.</p>
       <div class="dia-features">
@@ -1741,52 +1965,27 @@ footer {
   </div>
 </div>
 
-<!-- PROCESS -->
-<section id="proceso" class="reveal">
-  <div class="section-label">Proceso</div>
-  <h2 class="section-title">De la idea al <em>resultado</em></h2>
-  <p class="section-desc">Un proceso simple y efectivo para que tu marca brille en el mundo digital.</p>
-  <div class="process-steps">
-    <div class="step">
-      <h3>Llamada Gratis</h3>
-      <p>30 minutos para conocer tu situación, tus metas y definir si somos el equipo ideal para ti.</p>
-    </div>
-    <div class="step">
-      <h3>Diseño del Plan</h3>
-      <p>Desarrollamos la estrategia completa: contenido, funnels, ecosistema y calendario de acción.</p>
-    </div>
-    <div class="step">
-      <h3>Ejecución</h3>
-      <p>Nuestro equipo se encarga de todo: edición, diseño, copywriting y lanzamiento.</p>
-    </div>
-    <div class="step">
-      <h3>Escalamiento</h3>
-      <p>Optimizamos, medimos resultados y escalamos lo que funciona para maximizar tu ROI.</p>
-    </div>
-  </div>
-</section>
-
 <!-- CTA -->
 <section class="cta-section" id="contacto">
   <h2>¿Lista para <em>transformar</em><br>tu negocio digital?</h2>
   <p>Agenda una llamada gratuita de 30 minutos y descubre cómo podemos ayudarte a alcanzar tus metas.</p>
-  <a href="https://www.mentes-abundantes.com/claridad" class="btn-primary" style="font-size:1.1rem; padding:1.2rem 3rem;" target="_blank">Agenda Tu Llamada Gratis →</a>
+  <a href="https://zambranokrystina-ui.github.io/mercadeomrr/claridad.html" class="btn-primary" style="font-size:1.1rem; padding:1.2rem 3rem;" target="_blank">Agenda Tu Llamada Gratis →</a>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="logo">Mercadeo <span>MRR</span></div>
+      <div class="logo">
+        <img src="logo-mercadeo.png" alt="Mercadeo MRR" class="logo-img">
+      </div>
       <p>© 2026 Mercadeo MRR LLC. Todos los derechos reservados.</p>
     </div>
     <div class="footer-links">
       <a href="#servicios">Servicios</a>
       <a href="#mentes">Mentes Abundantes</a>
-      <a href="#membresia">Membresía</a>
-      <a href="#asesoria">Asesoría</a>
       <a href="#dia-club">DIA Club</a>
-      <a href="#contacto">Contacto</a>
+      <a href="https://zambranokrystina-ui.github.io/mercadeomrr/claridad.html" target="_blank">Contacto</a>
     </div>
     <div class="footer-social">
       <a href="https://www.instagram.com/mentesabundantesoficial" title="Instagram" target="_blank">IG</a>
@@ -1810,6 +2009,27 @@ const observer = new IntersectionObserver((entries) => {
 reveals.forEach(el => observer.observe(el));
 
 // Nav - no scroll needed in iframe
+
+// Testimonial Carousel
+let currentSlide = 0;
+const slides = document.querySelectorAll('.carousel-slide');
+const dots = document.querySelectorAll('.carousel-dots .dot');
+const totalSlides = slides.length;
+
+function goSlide(index) {
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = index;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+
+function nextSlide() {
+  goSlide((currentSlide + 1) % totalSlides);
+}
+
+// Auto-rotate every 4 seconds
+setInterval(nextSlide, 4000);
 </script>
 
 </body>
